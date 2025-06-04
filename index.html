@@ -6,31 +6,82 @@
   <title>Periplo Studio</title>
   <style>
     body {
+      font-family: system-ui, sans-serif;
+      background: #0f0f0f;
+      color: #f5f5f5;
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      background: #111;
-      color: #eee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      line-height: 1.6;
+    }
+    header, footer {
       text-align: center;
+      padding: 2rem;
     }
     h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
+    .sub {
+      font-style: italic;
+      color: #bbb;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    iframe, video {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+    }
+    a {
+      color: #00d4ff;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div>
+
+  <header>
     <h1>Periplo Studio</h1>
-    <p>Estudio nómada de creación audiovisual, diseño y producción sonora.<br>No hacemos publicidad. Contamos historias visuales con sentido y con cuerpo.</p>
-  </div>
+    <p class="sub">Estudio nómada de creación audiovisual y diseño gráfico</p>
+  </header>
+
+  <section>
+    <h2>Sobre nosotros</h2>
+    <p>
+      No hacemos publicidad. Creamos piezas que respiran, que se mueven solas.  
+      Grabamos, diseñamos, editamos, pensamos.  
+      Nos movemos sin oficina fija, entre ideas, ruidos, trazos y cuerpos.
+    </p>
+  </section>
+
+  <section>
+    <h2>Trabajos recientes</h2>
+    <!-- Primer video embebido -->
+    <iframe 
+      src="https://www.youtube.com/embed/rhUEiaQfEJ4?si=PAMi_ItmK65Jb9Or" 
+      title="Video de Periplo" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <p>
+      Escríbenos a:  
+      <a href="mailto:info@periplo.studio">info@periplo.studio</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Periplo Studio. Hecho con código y café.</p>
+  </footer>
+
 </body>
 </html>
