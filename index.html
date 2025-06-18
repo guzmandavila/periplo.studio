@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --accent: #ffffff;
@@ -87,11 +88,11 @@
 </head>
 <body>
 
-  <header>
+  <header data-aos="fade-down">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" />
   </header>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Sobre nosotros</h2>
     <p>
       Hacemos imágenes que capturan procesos reales. Construimos sonido y narrativa desde el hacer.<br/>
@@ -100,7 +101,7 @@
     </p>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Trabajos</h2>
     <div class="video-container">
       <iframe 
@@ -112,7 +113,7 @@
     </div>
   </section>
 
-<section>
+<section data-aos="fade-up">
   <h2>Tu equipo audiovisual, sin tener uno</h2>
   <p>
     Periplo Studio ofrece una solución integral para empresas que necesitan producir contenido sin montar un departamento interno. 
@@ -127,7 +128,7 @@
     <h3 style="color: var(--accent); border-bottom: 1px solid var(--accent); display: inline-block;">Modalidades de servicio</h3>
     <div style="display: grid; gap: 2rem; grid-template-columns: 1fr; padding-top: 1rem;">
       
-      <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
+      <div data-aos="fade-right" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
         <h4 style="margin-top: 0;">Producción por proyecto</h4>
         <p>
           Ideal para contenidos puntuales: entrevistas, lanzamientos, registros o coberturas. 
@@ -135,7 +136,7 @@
         </p>
       </div>
       
-      <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
+      <div data-aos="fade-left" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
         <h4 style="margin-top: 0;">Producción mensual</h4>
         <p>
           Pensado para empresas que requieren grabaciones frecuentes: contenido para redes, campañas, comunicación interna o institucional. 
@@ -143,7 +144,7 @@
         </p>
       </div>
       
-      <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
+      <div data-aos="fade-up" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 6px;">
         <h4 style="margin-top: 0;">Producción integral</h4>
         <p>
           Modelo completo, como el aplicado para medios digitales. Incluye cámaras, dron, audio profesional, edición, almacenamiento en la nube y físico, transporte y licencias. 
@@ -158,7 +159,7 @@
   </p>
 </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Contacto</h2>
     <p>
       Escríbenos a:<br/>
@@ -169,6 +170,11 @@
   <footer>
     <p>&copy; 2025 Periplo Studio. Hecho con código y café.</p>
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
 </body>
 </html>
