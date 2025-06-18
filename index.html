@@ -15,6 +15,7 @@
       --bg-dark: #121212;     /* Near-black */
       --nav-bg: rgba(18,18,18,0.9);
       --section-bg: rgba(18,18,18,0.7);
+      --card-bg: rgba(18,18,18,0.5);
     }
     body {
       margin: 0;
@@ -77,17 +78,13 @@
     p, li {
       font-size: 1rem;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-    }
-    li::before {
-      content: '• ';
+    a, section a {
       color: var(--accent);
-      font-weight: bold;
-      display: inline-block;
-      width: 1rem;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    a:hover, section a:hover {
+      color: rgba(243,234,213,0.7);
     }
     .video-container {
       position: relative;
@@ -176,12 +173,21 @@
 
   <section id="servicios" data-aos="fade-up">
     <h2>Servicios</h2>
-    <ul>
-      <li><strong>Producción por proyecto:</strong> Grabaciones puntuales con equipo profesional y postproducción lista para publicar.</li>
-      <li><strong>Producción mensual:</strong> Contenido periódico para redes y campañas, con planificación editorial y edición continuada.</li>
-      <li><strong>Producción integral:</strong> Departamento audiovisual completo bajo un fee fijo: cámaras, drones, audio, edición, licencias y almacenamiento.</li>
-    </ul>
-    <p><em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em></p>
+    <div style="display:grid; gap:2rem; grid-template-columns:1fr; margin-top:1rem;">
+      <div data-aos="fade-right" style="background: var(--card-bg); padding:1.5rem; border-radius:12px;">
+        <h3>Producción por proyecto</h3>
+        <p>Ideal para contenidos puntuales: entrevistas, lanzamientos, registros o coberturas.<br/>Incluye grabación profesional, dron si se requiere, audio, postproducción y entrega final.</p>
+      </div>
+      <div data-aos="fade-left" style="background: var(--card-bg); padding:1.5rem; border-radius:12px;">
+        <h3>Producción mensual</h3>
+        <p>Pensado para empresas que requieren grabaciones frecuentes: contenido para redes, campañas, comunicación interna o institucional.<br/>Producción periódica bajo planificación editorial, con todo el equipo necesario incluido.</p>
+      </div>
+      <div data-aos="fade-up" style="background: var(--card-bg); padding:1.5rem; border-radius:12px;">
+        <h3>Producción integral</h3>
+        <p>Modelo completo, como el aplicado para medios digitales. Incluye cámaras, dron, audio profesional, edición, almacenamiento en la nube y físico, transporte y licencias.<br/>Todo bajo una tarifa mensual que reemplaza la necesidad de contratar un equipo interno.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;"><em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em></p>
   </section>
 
   <section id="contacto" data-aos="fade-up">
