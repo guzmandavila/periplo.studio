@@ -27,28 +27,35 @@
       color: var(--accent);
       background: var(--bg-dark);
     }
+    /* Navegación */
     nav {
       background: var(--nav-bg);
-      padding: 1rem 2rem;
+      padding: 1rem;
       position: sticky;
       top: 0;
       z-index: 1000;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     nav a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      transition: color 0.2s ease;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      transition: background 0.2s ease;
     }
-    nav a:hover { color: rgba(243,234,213,0.7); }
+    nav a:hover {
+      background: rgba(243,234,213,0.1);
+    }
     header {
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 3rem 1rem;
     }
     header img {
       max-width: 70%;
@@ -56,6 +63,7 @@
       margin: 0 auto 1rem;
       display: block;
     }
+    /* Secciones */
     section {
       background: var(--section-bg);
       padding: 2rem 1rem;
@@ -69,7 +77,7 @@
       font-family: 'Bebas Neue', cursive;
       color: var(--accent);
     }
-    h2 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
     p, li { font-size: 1rem; }
     a, section a {
       color: var(--accent);
@@ -77,6 +85,7 @@
       transition: color 0.2s ease;
     }
     a:hover, section a:hover { color: rgba(243,234,213,0.7); }
+    /* Trabajo y Servicios */
     .video-container {
       position: relative;
       width: 100%;
@@ -111,15 +120,12 @@
       border-radius: 30px;
       margin-bottom: 1rem;
     }
+    /* Formularios */
     form {
       display: grid;
       gap: 1rem;
     }
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 500;
-    }
+    label { display: flex; flex-direction: column; font-weight: 500; }
     input, textarea {
       margin-top: 0.5rem;
       padding: 0.75rem;
@@ -131,37 +137,37 @@
     }
     textarea { resize: vertical; min-height: 100px; }
     .action-button {
-      position: fixed;
-      bottom: 20px;
       padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 30px;
       background: var(--button-bg);
       color: var(--bg-dark);
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.2s ease, background 0.3s ease;
-      z-index: 999;
+      align-self: start;
     }
     .action-button:hover { transform: scale(1.05); background: #e8dfc5; }
-    .quote-button { right: 20px; }
-    .join-button { left: 20px; }
+    /* CTA Sections */
+    .cta-section { max-width: 600px; margin: 2rem auto; }
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
       color: rgba(243,234,213,0.7);
     }
+    /* Responsive */
     @media (min-width: 700px) {
       #servicios .cards { display: grid; grid-template-columns: repeat(3,1fr); gap:2rem; }
     }
     @media (max-width: 600px) {
-      nav { flex-direction: column; gap: 1rem; }
+      nav a { font-size: 0.9rem; padding: 0.5rem; }
       header img { max-width: 90%; }
       section { padding: 1.5rem 1rem; }
-      h2 { font-size: 2rem; }
+      h2 { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -170,8 +176,8 @@
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="#cotizacion">Solicitar cotización</a>
-    <a href="#trabaja">Únete al equipo</a>
+    <a href="#cotizacion">Inicia tu proyecto</a>
+    <a href="#trabaja">Trabaja con nosotros</a>
   </nav>
 
   <header data-aos="fade-down">
@@ -218,24 +224,24 @@
     <p style="margin-top:1.5rem;"><em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em></p>
   </section>
 
-  <section id="cotizacion" data-aos="fade-up">
-    <h2>Solicita tu cotización</h2>
+  <section id="cotizacion" class="cta-section" data-aos="fade-up">
+    <h2>Inicia tu proyecto</h2>
     <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
       <label>Nombre o empresa
         <input type="text" name="Nombre o empresa" required>
       </label>
-      <label>Breve descripción del proyecto o situación
+      <label>Descripción del proyecto o situación
         <textarea name="Descripción" required></textarea>
       </label>
       <label>Otros detalles imprescindibles
-        <textarea name="Otros detalles"></textarea>
+        <textarea name="Detalles"></textarea>
       </label>
-      <button type="submit" class="action-button quote-button">Enviar cotización</button>
+      <button type="submit" class="action-button">Enviar solicitud</button>
     </form>
   </section>
 
-  <section id="trabaja" data-aos="fade-up">
-    <h2>Únete al equipo</h2>
+  <section id="trabaja" class="cta-section" data-aos="fade-up">
+    <h2>Trabaja con nosotros</h2>
     <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
       <label>Nombre completo
         <input type="text" name="Nombre completo" required>
@@ -246,7 +252,7 @@
       <label>Experiencia y habilidades
         <textarea name="Experiencia" required></textarea>
       </label>
-      <button type="submit" class="action-button join-button">Enviar aplicación</button>
+      <button type="submit" class="action-button">Enviar aplicación</button>
     </form>
   </section>
 
