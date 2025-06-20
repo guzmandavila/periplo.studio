@@ -8,201 +8,150 @@
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Variables de color */
+    /* Colores oscuros y “parchment” */
     :root {
-      --bg: #f9f9f9;
-      --fg: #333;
-      --accent: #ff6f61;
+      --bg: #121212;
+      --fg: #f3ead5;
+      --accent: #e8dfc5;
     }
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--fg);
       line-height: 1.5;
+      padding-top: 4rem; /* espacio para la nav fija */
     }
-    a {
-      color: var(--fg);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    a:hover {
-      color: var(--accent);
-    }
-    /* Navegación */
+    a { color: var(--fg); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--accent); }
+
+    header, main, nav, section, footer { display: block; }
+
+    /* NAV fija */
     nav {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid #eee;
-      z-index: 10;
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(18,18,18,0.9); backdrop-filter: blur(6px);
+      display: flex; justify-content: center; gap: 2rem;
+      padding: 1rem 0; border-bottom: 1px solid rgba(243,234,213,0.1);
+      z-index: 1000;
     }
     nav a {
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      padding: 0.25rem;
-      position: relative;
+      font-weight: 600; text-transform: uppercase; font-size: .9rem;
+      padding: .25rem; position: relative;
     }
     nav a::after {
-      content: '';
-      position: absolute;
-      height: 2px;
-      width: 0;
-      left: 0; bottom: -2px;
-      background: var(--accent);
+      content: ''; position: absolute; height: 2px; width: 0;
+      left: 0; bottom: -2px; background: var(--accent);
       transition: width .2s;
     }
-    nav a:hover::after {
-      width: 100%;
-    }
-    /* Hero */
+    nav a:hover::after { width: 100%; }
+
+    /* Hero / Logo */
     .hero {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
+      text-align: center; padding: 4rem 1rem 2rem;
     }
     .hero img {
-      max-width: 180px;
-      height: auto;
-      margin-bottom: 1rem;
+      max-width: 300px; height: auto; margin-bottom: 1rem;
     }
     .hero h1 {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: 600;
+      margin: 0; font-size: 2.5rem; font-weight: 600;
       color: var(--fg);
     }
-    /* Secciones */
+
+    /* Main */
     main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+      max-width: 900px; margin: 0 auto; padding: 2rem 1rem;
     }
-    section {
+
+    /* Visión y esencia */
+    #vision {
       margin-bottom: 3rem;
     }
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      position: relative;
+    #vision h2 {
+      font-size: 1.8rem; margin-bottom: 1rem; position: relative;
     }
-    section h2::after {
-      content: '';
-      height: 3px;
-      width: 50px;
-      background: var(--accent);
-      display: block;
-      margin-top: 0.5rem;
-      border-radius: 2px;
+    #vision h2::after {
+      content: ''; display: block; height: 3px; width: 50px;
+      background: var(--accent); margin-top: .5rem; border-radius: 2px;
     }
+
     /* Carrusel de video */
-    .video-frame {
-      position: relative;
-      padding-top: 56.25%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    #trabajos .video-frame {
+      position: relative; padding-top: 56.25%; overflow: hidden;
+      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .video-frame iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
+    #trabajos .video-frame iframe {
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      border:none;
     }
     .video-nav {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
+      display: flex; justify-content: space-between; margin-top: 1rem;
     }
     .video-nav button {
-      background: var(--accent);
-      border: none;
-      color: white;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background .2s, transform .2s;
+      background: var(--accent); border: none; color: var(--bg);
+      width: 3rem; height: 3rem; border-radius: 50%; font-size: 1.2rem;
+      cursor: pointer; transition: background .2s, transform .2s;
     }
     .video-nav button:disabled {
-      background: #ddd;
-      cursor: default;
+      background: #444; cursor: default;
     }
     .video-nav button:hover:not(:disabled) {
       transform: scale(1.1);
     }
+
     /* Servicios */
+    #servicios p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
     .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
     }
-    @media(min-width:700px) {
-      .cards { grid-template-columns: repeat(3,1fr); }
-    }
+    @media(min-width:700px) { .cards { grid-template-columns: repeat(3,1fr); } }
     .service-card {
-      background: white;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      background: #1e1e1e; border: 1px solid rgba(243,234,213,0.1);
+      border-radius: 8px; padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: box-shadow .2s, transform .2s;
     }
     .service-card:hover {
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
       transform: translateY(-4px);
     }
     .service-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
+      margin-top: 0; margin-bottom: .5rem;
       color: var(--accent);
     }
-    /* Formularios */
-    form {
-      display: grid;
-      gap: 1rem;
+    #servicios em {
+      display: block; margin-top: 1rem; font-style: italic;
+      color: rgba(243,234,213,0.7);
     }
+
+    /* Formularios */
+    form { display: grid; gap: 1rem; }
     label {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.9rem;
+      display: flex; flex-direction: column; font-size: .9rem;
     }
     input, textarea {
-      margin-top: 0.25rem;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      margin-top: .25rem; padding: .75rem;
+      border: 1px solid #333; border-radius: 6px;
+      background: #1e1e1e; color: var(--fg);
       font-family: inherit;
-      font-size: 0.9rem;
     }
     .button-primary {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .2s;
-      width: max-content;
+      background: var(--accent); color: var(--bg);
+      border: none; padding: .75rem 1.5rem; border-radius: 6px;
+      font-size: .9rem; font-weight: 600; cursor: pointer;
+      transition: background .2s; width: max-content;
     }
-    .button-primary:hover {
-      background: #e55b50;
-    }
+    .button-primary:hover { background: #d8c9b3; }
+
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.8rem;
-      color: #777;
-      border-top: 1px solid #eee;
+      text-align: center; padding: 2rem 1rem;
+      font-size: .8rem; color: #777;
+      border-top: 1px solid rgba(243,234,213,0.1);
     }
   </style>
 </head>
@@ -211,19 +160,26 @@
   <nav role="navigation">
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="#cotizacion">Cotizar</a>
-    <a href="#trabaja">Trabaja</a>
+    <a href="#cotizacion">Inicia tu proyecto</a>
+    <a href="#trabaja">Trabaja con nosotros</a>
   </nav>
 
   <header class="hero">
-    <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo">
+    <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
     <h1>Periplo Studio</h1>
   </header>
 
   <main>
+    <!-- Visión y esencia -->
+    <section id="vision">
+      <h2>Visión y esencia</h2>
+      <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imágenes y sonido que resuenan con la voz y los valores de quienes confían en nosotros.</p>
+    </section>
+
+    <!-- Trabajos -->
     <section id="trabajos">
       <h2>Trabajos</h2>
-      <div class="video-frame">
+      <div class="video-frame" id="videoFrame">
         <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-nav">
@@ -232,8 +188,10 @@
       </div>
     </section>
 
+    <!-- Servicios -->
     <section id="servicios">
       <h2>Servicios</h2>
+      <p>En la práctica hemos observado que muchas empresas necesitan un equipo audiovisual completo, pero no desean invertir en la adquisición de equipos o la contratación de personal adicional. Tampoco quieren cotizar cada video de manera independiente con una productora. Por eso ofrecemos una modalidad en la que no tienes que preocuparte por contratar personal ni asumir altos costos en equipos.</p>
       <div class="cards">
         <div class="service-card">
           <h3>Producción por proyecto</h3>
@@ -245,11 +203,13 @@
         </div>
         <div class="service-card">
           <h3>Producción integral</h3>
-          <p>Cámaras, dron, audio, edición, licencias y transporte. Bajo una tarifa mensual fija.</p>
+          <p>Cámaras, dron, audio, edición, almacenamiento y licencias. Todo bajo tarifa mensual.</p>
         </div>
       </div>
+      <em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em>
     </section>
 
+    <!-- Cotización -->
     <section id="cotizacion">
       <h2>Inicia tu proyecto</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
@@ -262,13 +222,14 @@
           <textarea name="Descripción" required></textarea>
         </label>
         <label>
-          Detalles
+          Otros detalles imprescindibles
           <textarea name="Detalles"></textarea>
         </label>
         <button type="submit" class="button-primary">Enviar solicitud</button>
       </form>
     </section>
 
+    <!-- Trabaja con nosotros -->
     <section id="trabaja">
       <h2>Trabaja con nosotros</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
@@ -312,8 +273,8 @@
       prev.disabled = idx === 0;
       next.disabled = idx === videos.length - 1;
     }
-    prev.onclick = () => { if(idx>0) { player.src = videos[--idx]; upd(); } };
-    next.onclick = () => { if(idx<videos.length-1) { player.src = videos[++idx]; upd(); } };
+    prev.onclick = () => { if (idx > 0) { player.src = videos[--idx]; upd(); } };
+    next.onclick = () => { if (idx < videos.length - 1) { player.src = videos[++idx]; upd(); } };
     upd();
   </script>
 </body>
