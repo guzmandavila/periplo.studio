@@ -1,255 +1,219 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Periplo Studio</title>
-  <!-- Favicon personalizado -->
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-  <link rel="shortcut icon" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="description" content="Periplo Studio: producción audiovisual con precisión técnica y tacto creativo.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Periplo Studio">
+  <meta property="og:description" content="Periplo Studio: producción audiovisual con precisión técnica y tacto creativo.">
+  <meta property="og:image" content="https://tusitio.com/og-image.jpg">
+  <meta property="og:url" content="https://tusitio.com">
+  <meta property="og:type" content="website">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Periplo Studio">
+  <meta name="twitter:description" content="Periplo Studio: producción audiovisual con precisión técnica y tacto creativo.">
+  <meta name="twitter:image" content="https://tusitio.com/twitter-image.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="msapplication-TileImage" content="mstile-150x150.png">
+  
+  <!-- Preload fuente -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Estilos -->
   <style>
     :root {
-      --accent: #f3ead5;
-      --bg-dark: #121212;
-      --nav-bg: rgba(18,18,18,0.9);
-      --section-bg: rgba(18,18,18,0.7);
-      --card-bg: rgba(18,18,18,0.6);
-      --input-bg: rgba(255,255,255,0.1);
-      --button-bg: var(--accent);
+      /* esquema por defecto (oscuro) */
+      --bg: #121212;
+      --fg: #f3ead5;
+    }
+    /* cuando el sistema prefiera claro, invertimos */
+    .light {
+      --bg: #f3ead5;
+      --fg: #121212;
     }
     body {
-      margin:0; padding:0; line-height:1.6;
-      font-family:'Poppins',sans-serif;
-      color:var(--accent);
-      background:var(--bg-dark);
+      margin:0; padding:0; background:var(--bg); color:var(--fg);
+      font-family:'Poppins',sans-serif; line-height:1.6;
     }
+    a { color:var(--fg); text-decoration:none; }
+    a:hover { opacity:0.8; }
+    header, main, nav, section, footer, aside { display:block; }
     nav {
-      background:var(--nav-bg);
-      padding:1rem;
-      position:sticky; top:0; z-index:1000;
-      display:flex; justify-content:center; flex-wrap:wrap; gap:1rem;
+      position:sticky; top:0; background:rgba(18,18,18,0.9);
+      padding:1rem; display:flex; justify-content:center; gap:1rem;
     }
     nav a {
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:600;
-      font-family:'Bebas Neue',cursive;
-      font-size:1rem;
-      padding:0.5rem 1rem;
-      border-radius:20px;
-      transition:background 0.2s;
+      font-family:'Bebas Neue',cursive; font-size:1rem;
+      padding:.5rem 1rem; border-radius:20px;
+      background:rgba(243,234,213,0.1);
     }
-    nav a:hover { background:rgba(243,234,213,0.1); }
-    header { text-align:center; padding:3rem 1rem; }
-    header img { max-width:70%; height:auto; margin:0 auto 1rem; display:block; }
-    section {
-      background:var(--section-bg);
-      padding:2rem 1rem;
-      margin:2rem auto;
-      border-radius:12px;
-      max-width:900px;
-      backdrop-filter:blur(5px);
+    .logo {
+      text-align:center; padding:2rem 1rem;
     }
-    h2,h3 { margin:0 0 1rem; font-family:'Bebas Neue',cursive; color:var(--accent); }
-    h2 { font-size:2rem; }
-    p,li { font-size:1rem; }
-    a,section a {
-      color:var(--accent);
-      text-decoration:underline;
-      transition:color 0.2s;
-    }
-    a:hover,section a:hover { color:rgba(243,234,213,0.7); }
+    .logo picture img { max-width:200px; height:auto; }
+    main { padding:2rem 1rem; max-width:900px; margin:0 auto; }
+    h2 { font-family:'Bebas Neue',cursive; font-size:2rem; margin-bottom:1rem; }
+    section { margin-bottom:2rem; }
+    /* Carrusel de video */
     .video-frame {
-      position: relative;
-      width:100%;
-      padding-bottom:56.25%;
-      border-radius:12px;
-      overflow:hidden;
+      position:relative; width:100%; padding-bottom:56.25%;
+      overflow:hidden; border-radius:12px;
       box-shadow:0 4px 15px rgba(0,0,0,0.5);
-      margin-top:1rem;
+      touch-action: pan-y;
     }
     .video-frame iframe {
-      position:absolute; top:0; left:0;
-      width:100%; height:100%; border:0;
+      position:absolute; top:0; left:0; width:100%; height:100%;
     }
     .video-nav {
       display:flex; justify-content:center; gap:1rem;
       margin-top:1rem;
     }
     .video-nav button {
-      padding:0; /* eliminamos padding extra */
-      border:none;
-      background:var(--button-bg);
-      color:var(--bg-dark);
-      cursor:pointer;
-      border-radius:50%;
-      font-size:1.5rem;
-      width:3rem;
-      height:3rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:transform 0.2s, background 0.3s;
+      border:none; background:var(--fg); color:var(--bg);
+      width:3rem; height:3rem; border-radius:50%;
+      font-size:1.5rem; display:flex; align-items:center;
+      justify-content:center; cursor:pointer;
     }
-    .video-nav button:hover {
-      transform:scale(1.1);
-      background:#e8dfc5;
-    }
+    .video-nav button:disabled { opacity:.4; cursor:default; }
+    .video-nav button:focus { outline:2px solid var(--fg); }
+    /* Tarjetas de servicio */
+    .cards { display:grid; grid-template-columns:1fr; gap:1rem; }
     .service-card {
-      background:var(--card-bg);
-      padding:1.5rem;
-      border-radius:12px;
-      transition:transform 0.3s,box-shadow 0.3s;
-      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+      background:rgba(18,18,18,0.6); padding:1.5rem; border-radius:12px;
+      transition:transform .3s,box-shadow .3s;
     }
     .service-card:hover {
       transform:translateY(-5px);
       box-shadow:0 8px 20px rgba(0,0,0,0.6);
     }
-    .service-card h3 {
-      display:inline-block;
-      background:var(--accent);
-      color:var(--bg-dark);
-      padding:0.25rem 1rem;
-      border-radius:30px;
-      margin-bottom:1rem;
+    /* Formulario */
+    form { display:grid; gap:.5rem; }
+    label { font-weight:500; display:flex; flex-direction:column; }
+    input, textarea {
+      padding:.5rem; border:none; border-radius:6px;
+      background:rgba(255,255,255,0.1); color:var(--fg);
     }
-    form { display:grid; gap:0.5rem; }
-    label {
-      display:flex; flex-direction:column;
-      font-weight:500; font-size:0.9rem;
-    }
-    input,textarea {
-      margin-top:0.3rem;
-      padding:0.5rem;
-      border:none; border-radius:6px;
-      background:var(--input-bg);
-      color:var(--accent);
-      font-family:inherit;
-      font-size:0.9rem;
-    }
-    textarea { resize:vertical; min-height:80px; }
     .action-button {
-      padding:0.5rem 1rem;
-      border:none; border-radius:30px;
-      background:var(--button-bg);
-      color:var(--bg-dark);
-      font-family:'Bebas Neue',cursive;
-      font-size:0.9rem;
-      cursor:pointer;
-      box-shadow:0 4px 12px rgba(0,0,0,0.3);
-      transition:transform 0.2s,background 0.3s;
-      align-self:start;
+      padding:.5rem 1rem; border:none; border-radius:30px;
+      background:var(--fg); color:var(--bg);
+      font-family:'Bebas Neue',cursive; cursor:pointer;
+      align-self:start; box-shadow:0 4px 12px rgba(0,0,0,0.3);
     }
-    .action-button:hover {
-      transform:scale(1.05);
-      background:#e8dfc5;
+    /* Scroll progress bar */
+    #progress {
+      position:fixed; top:0; left:0; height:4px;
+      background:var(--fg); width:0; z-index:1001;
     }
-    .cta-section { max-width:450px; margin:2rem auto; }
-    footer { text-align:center; padding:2rem; font-size:0.9rem; color:rgba(243,234,213,0.7); }
+    /* Animaciones por IntersectionObserver */
+    [data-animate] {
+      opacity:0; transform:translateY(20px);
+      transition:opacity .6s ease-out, transform .6s ease-out;
+    }
+    [data-animate].visible {
+      opacity:1; transform:translateY(0);
+    }
+    /* Responsive */
     @media(min-width:700px){
-      #servicios .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
-    }
-    @media(max-width:600px){
-      nav a { font-size:0.9rem; padding:0.4rem 0.8rem; }
-      header img { max-width:90%; }
-      section { padding:1.5rem 1rem; }
-      h2 { font-size:1.8rem; }
+      .cards { grid-template-columns:repeat(3,1fr); }
     }
   </style>
 </head>
 <body>
+  <div id="progress"></div>
 
-  <nav>
+  <nav role="navigation">
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="#cotizacion">Inicia tu proyecto</a>
-    <a href="#trabaja">Trabaja con nosotros</a>
+    <a href="#cotizacion">Cotización</a>
+    <a href="#trabaja">Trabaja</a>
   </nav>
 
-  <header data-aos="fade-down">
-    <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" />
+  <header class="logo" data-animate>
+    <picture>
+      <source srcset="logo.avif" type="image/avif">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Periplo Studio Logo">
+    </picture>
   </header>
 
-  <section data-aos="fade-up">
-    <h2>Visión y esencia</h2>
-    <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imágenes y sonido que resuenan con la voz y los valores de quienes confían en nosotros.</p>
-  </section>
+  <main>
+    <section data-animate>
+      <h2>Visión y esencia</h2>
+      <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad.</p>
+    </section>
 
-  <section id="trabajos" data-aos="fade-up">
-    <h2>Trabajos</h2>
-    <div class="video-frame">
-      <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" allowfullscreen></iframe>
-    </div>
-    <div class="video-nav">
-      <button id="prevBtn" aria-label="Anterior">&#9664;</button>
-      <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
-    </div>
-  </section>
-
-  <section id="servicios" data-aos="fade-up">
-    <h2>Servicios</h2>
-    <p>En la práctica hemos observado que muchas empresas necesitan un equipo audiovisual completo, pero no desean invertir en la adquisición de equipos o la contratación de personal adicional. Tampoco quieren cotizar cada video de manera independiente con una productora. Por eso ofrecemos una modalidad en la que no tienes que preocuparte por contratar personal ni asumir altos costos en equipos.</p>
-    <div class="cards" id="servicios-cards" style="margin-top:1rem;">
-      <div class="service-card" data-aos="fade-right">
-        <h3>Producción por proyecto</h3>
-        <p>Ideal para contenidos puntuales: entrevistas, lanzamientos, registros o coberturas. Incluye grabación profesional, dron si se requiere, audio, postproducción y entrega final.</p>
+    <section id="trabajos" data-animate>
+      <h2>Trabajos</h2>
+      <div class="video-frame" id="videoFrame">
+        <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" loading="lazy" allowfullscreen></iframe>
       </div>
-      <div class="service-card" data-aos="fade-up">
-        <h3>Producción mensual</h3>
-        <p>Pensado para empresas que requieren grabaciones frecuentes: contenido para redes, campañas, comunicación interna o institucional. Producción periódica bajo planificación editorial, con todo el equipo necesario incluido.</p>
+      <div class="video-nav">
+        <button id="prevBtn" aria-label="Anterior" disabled>&#9664;</button>
+        <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
       </div>
-      <div class="service-card" data-aos="fade-left">
-        <h3>Producción integral</h3>
-        <p>Modelo completo, como el aplicado para medios digitales. Incluye cámaras, dron, audio profesional, edición, almacenamiento en la nube y físico, transporte y licencias. Todo bajo una tarifa mensual que reemplaza la necesidad de contratar un equipo interno.</p>
+    </section>
+
+    <section id="servicios" data-animate>
+      <h2>Servicios</h2>
+      <div class="cards">
+        <div class="service-card" data-animate>
+          <h3>Producción por proyecto</h3>
+          <p>Entrevistas, lanzamientos, registros. Incluye dron, audio, postproducción y entrega final.</p>
+        </div>
+        <div class="service-card" data-animate>
+          <h3>Producción mensual</h3>
+          <p>Contenidos periódicos para redes y comunicación interna. Plan editorial y equipo completo.</p>
+        </div>
+        <div class="service-card" data-animate>
+          <h3>Producción integral</h3>
+          <p>Cámaras, dron, audio, edición, licencias y transporte. Bajo una tarifa mensual fija.</p>
+        </div>
       </div>
-    </div>
-    <p style="margin-top:1.5rem;"><em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em></p>
-  </section>
+    </section>
 
-  <section id="cotizacion" class="cta-section" data-aos="fade-up">
-    <h2>Inicia tu proyecto</h2>
-    <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-      <label>Nombre o empresa
-        <input type="text" name="Nombre o empresa" required>
-      </label>
-      <label>Descripción del proyecto o situación
-        <textarea name="Descripción" required></textarea>
-      </label>
-      <label>Otros detalles imprescindibles
-        <textarea name="Detalles"></textarea>
-      </label>
-      <button type="submit" class="action-button">Enviar solicitud</button>
-    </form>
-  </section>
+    <section id="cotizacion" data-animate>
+      <h2>Inicia tu proyecto</h2>
+      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
+        <label>Nombre o empresa<input type="text" name="Nombre o empresa" required></label>
+        <label>Descripción<textarea name="Descripción" required></textarea></label>
+        <label>Detalles<textarea name="Detalles"></textarea></label>
+        <button type="submit" class="action-button">Enviar solicitud</button>
+      </form>
+    </section>
 
-  <section id="trabaja" class="cta-section" data-aos="fade-up">
-    <h2>Trabaja con nosotros</h2>
-    <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-      <label>Nombre completo
-        <input type="text" name="Nombre completo" required>
-      </label>
-      <label>Contacto (email o teléfono)
-        <input type="text" name="Contacto" required>
-      </label>
-      <label>Experiencia y habilidades
-        <textarea name="Experiencia" required></textarea>
-      </label>
-      <button type="submit" class="action-button">Enviar aplicación</button>
-    </form>
-  </section>
+    <section id="trabaja" data-animate>
+      <h2>Trabaja con nosotros</h2>
+      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
+        <label>Nombre completo<input type="text" name="Nombre completo" required></label>
+        <label>Contacto<input type="text" name="Contacto" required></label>
+        <label>Experiencia<textarea name="Experiencia" required></textarea></label>
+        <button type="submit" class="action-button">Enviar aplicación</button>
+      </form>
+    </section>
+  </main>
 
-  <footer data-aos="fade-up">
+  <footer data-animate>
     <p>&copy; 2025 Periplo Studio. Hecho con código y café.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Scripts -->
   <script>
-    AOS.init();
+    // tema según preferencia del sistema
+    if(window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light');
+    }
+
+    // carrusel no circular, gestiona disabled
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
       'https://www.youtube.com/embed/Q88Erleku84',
@@ -261,14 +225,60 @@
     ];
     let current = 0;
     const player = document.getElementById('videoPlayer');
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      current = (current - 1 + videos.length) % videos.length;
-      player.src = videos[current];
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateButtons() {
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === videos.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (current > 0) {
+        current--;
+        player.src = videos[current];
+        updateButtons();
+      }
     });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      current = (current + 1) % videos.length;
-      player.src = videos[current];
+    nextBtn.addEventListener('click', () => {
+      if (current < videos.length - 1) {
+        current++;
+        player.src = videos[current];
+        updateButtons();
+      }
     });
+    updateButtons();
+
+    // swipe en móvil
+    let xStart = null;
+    const frame = document.getElementById('videoFrame');
+    frame.addEventListener('touchstart', e => { xStart = e.touches[0].clientX; });
+    frame.addEventListener('touchend', e => {
+      if (!xStart) return;
+      let xEnd = e.changedTouches[0].clientX;
+      if (xEnd - xStart > 50) prevBtn.click();
+      else if (xStart - xEnd > 50) nextBtn.click();
+      xStart = null;
+    });
+
+    // barra de progreso
+    const prog = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const p = document.documentElement;
+      const percent = (p.scrollTop / (p.scrollHeight - p.clientHeight)) * 100;
+      prog.style.width = percent + '%';
+    });
+
+    // IntersectionObserver para animar
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
   </script>
 </body>
 </html>
