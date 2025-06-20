@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Periplo Studio</title>
   <meta name="description" content="Producción audiovisual con precisión y creatividad.">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Colores oscuros y “parchment” */
     :root {
       --bg: #121212;
       --fg: #f3ead5;
@@ -17,28 +19,33 @@
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
+      padding-top: 4rem; /* espacio para nav fija */
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--fg);
       line-height: 1.5;
-      padding-top: 4rem; /* espacio para la nav fija */
     }
     a { color: var(--fg); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--accent); }
 
     header, main, nav, section, footer { display: block; }
 
-    /* NAV fija */
+    /* NAV fija con separación de CTAs */
     nav {
       position: fixed; top: 0; left: 0; width: 100%;
       background: rgba(18,18,18,0.9); backdrop-filter: blur(6px);
-      display: flex; justify-content: center; gap: 2rem;
-      padding: 1rem 0; border-bottom: 1px solid rgba(243,234,213,0.1);
+      display: flex; align-items: center; padding: 1rem;
       z-index: 1000;
     }
+    .nav-group { display: flex; gap: 2rem; }
+    .nav-spacer { flex: 1; }
     nav a {
       font-weight: 600; text-transform: uppercase; font-size: .9rem;
       padding: .25rem; position: relative;
+    }
+    nav a.cta {
+      background: var(--accent); color: var(--bg);
+      padding: .5rem 1rem; border-radius: 20px;
     }
     nav a::after {
       content: ''; position: absolute; height: 2px; width: 0;
@@ -52,11 +59,8 @@
       text-align: center; padding: 4rem 1rem 2rem;
     }
     .hero img {
-      max-width: 300px; height: auto; margin-bottom: 1rem;
-    }
-    .hero h1 {
-      margin: 0; font-size: 2.5rem; font-weight: 600;
-      color: var(--fg);
+      max-width: 400px; /* logo más grande */
+      height: auto; margin-bottom: 1rem;
     }
 
     /* Main */
@@ -64,26 +68,30 @@
       max-width: 900px; margin: 0 auto; padding: 2rem 1rem;
     }
 
-    /* Visión y esencia */
-    #vision {
+    /* Secciones y títulos destacados */
+    section {
       margin-bottom: 3rem;
     }
-    #vision h2 {
-      font-size: 1.8rem; margin-bottom: 1rem; position: relative;
-    }
-    #vision h2::after {
-      content: ''; display: block; height: 3px; width: 50px;
-      background: var(--accent); margin-top: .5rem; border-radius: 2px;
+    section h2 {
+      font-size: 2rem; margin-bottom: .5rem;
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+      padding-left: .75rem;
     }
 
-    /* Carrusel de video */
+    /* Visión y esencia */
+    #vision p {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    /* Trabajos / Video */
     #trabajos .video-frame {
       position: relative; padding-top: 56.25%; overflow: hidden;
       border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     #trabajos .video-frame iframe {
-      position: absolute; top:0; left:0; width:100%; height:100%;
-      border:none;
+      position: absolute; top:0; left:0; width:100%; height:100%; border:none;
     }
     .video-nav {
       display: flex; justify-content: space-between; margin-top: 1rem;
@@ -91,7 +99,7 @@
     .video-nav button {
       background: var(--accent); border: none; color: var(--bg);
       width: 3rem; height: 3rem; border-radius: 50%; font-size: 1.2rem;
-      cursor: pointer; transition: background .2s, transform .2s;
+      cursor: pointer; transition: transform .2s;
     }
     .video-nav button:disabled {
       background: #444; cursor: default;
@@ -105,9 +113,7 @@
       margin-bottom: 1rem;
       font-size: 1rem;
     }
-    .cards {
-      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
-    }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media(min-width:700px) { .cards { grid-template-columns: repeat(3,1fr); } }
     .service-card {
       background: #1e1e1e; border: 1px solid rgba(243,234,213,0.1);
@@ -130,14 +136,11 @@
 
     /* Formularios */
     form { display: grid; gap: 1rem; }
-    label {
-      display: flex; flex-direction: column; font-size: .9rem;
-    }
+    label { display: flex; flex-direction: column; font-size: .9rem; }
     input, textarea {
       margin-top: .25rem; padding: .75rem;
       border: 1px solid #333; border-radius: 6px;
-      background: #1e1e1e; color: var(--fg);
-      font-family: inherit;
+      background: #1e1e1e; color: var(--fg); font-family: inherit;
     }
     .button-primary {
       background: var(--accent); color: var(--bg);
@@ -157,16 +160,20 @@
 </head>
 <body>
 
-  <nav role="navigation">
-    <a href="#servicios">Servicios</a>
-    <a href="#trabajos">Trabajos</a>
-    <a href="#cotizacion">Inicia tu proyecto</a>
-    <a href="#trabaja">Trabaja con nosotros</a>
+  <nav>
+    <div class="nav-group">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="nav-group">
+      <a href="#cotizacion" class="cta">Inicia tu proyecto</a>
+      <a href="#trabaja" class="cta">Trabaja con nosotros</a>
+    </div>
   </nav>
 
   <header class="hero">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
-    <h1>Periplo Studio</h1>
   </header>
 
   <main>
@@ -231,51 +238,4 @@
 
     <!-- Trabaja con nosotros -->
     <section id="trabaja">
-      <h2>Trabaja con nosotros</h2>
-      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label>
-          Nombre completo
-          <input type="text" name="Nombre completo" required>
-        </label>
-        <label>
-          Contacto (email o teléfono)
-          <input type="text" name="Contacto" required>
-        </label>
-        <label>
-          Experiencia y habilidades
-          <textarea name="Experiencia" required></textarea>
-        </label>
-        <button type="submit" class="button-primary">Enviar aplicación</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Periplo Studio. Hecho con código y café.
-  </footer>
-
-  <script>
-    // Carrusel simple
-    const videos = [
-      'https://www.youtube.com/embed/rhUEiaQfEJ4',
-      'https://www.youtube.com/embed/Q88Erleku84',
-      'https://www.youtube.com/embed/fsBp5IUqhdg',
-      'https://www.youtube.com/embed/e9wMxjxAc5c',
-      'https://www.youtube.com/embed/vH5tkyOjVJo',
-      'https://www.youtube.com/embed/gqyrazOetYY',
-      'https://www.youtube.com/embed/4ZoNwZuYqWo'
-    ];
-    let idx = 0;
-    const player = document.getElementById('videoPlayer');
-    const prev = document.getElementById('prevBtn');
-    const next = document.getElementById('nextBtn');
-    function upd() {
-      prev.disabled = idx === 0;
-      next.disabled = idx === videos.length - 1;
-    }
-    prev.onclick = () => { if (idx > 0) { player.src = videos[--idx]; upd(); } };
-    next.onclick = () => { if (idx < videos.length - 1) { player.src = videos[++idx]; upd(); } };
-    upd();
-  </script>
-</body>
-</html>
+      <h2>Trabaja con nosotros</n
