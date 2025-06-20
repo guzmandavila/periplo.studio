@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,146 +40,169 @@
       box-sizing: border-box;
     }
     body {
-      margin:0; padding:0;
-      background:var(--bg);
-      color:var(--fg);
-      font-family:'Poppins',sans-serif;
-      line-height:1.6;
+      margin: 0;
+      padding-top: 4rem;            /* espacio para la nav fija */
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
     }
-    a { color:var(--fg); text-decoration:none; }
-    a:hover { opacity:0.8; }
-    header, main, nav, section, footer { display:block; }
+    a { color: var(--fg); text-decoration: none; }
+    a:hover { opacity: 0.8; }
+
+    header, main, nav, section, footer { display: block; }
+
+    /* NAV fija */
     nav[role="navigation"] {
-      position:sticky; top:0;
-      background:rgba(18,18,18,0.9);
-      padding:1rem;
-      display:flex; justify-content:center; gap:1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(18,18,18,0.95);
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 10000;
     }
     nav a {
-      font-family:'Bebas Neue',cursive;
-      font-size:1rem;
-      padding:.5rem 1rem;
-      border-radius:20px;
-      background:rgba(243,234,213,0.1);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      padding: .5rem 1rem;
+      border-radius: 20px;
+      background: rgba(243,234,213,0.1);
     }
+
     .logo {
-      text-align:center;
-      padding:2rem 1rem;
+      text-align: center;
+      padding: 2rem 1rem;
     }
     .logo picture img {
-      max-width:200px;
-      height:auto;
+      max-width: 200px;
+      height: auto;
     }
+
     main {
-      padding:2rem 1rem;
-      max-width:900px;
-      margin:0 auto;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
     h2 {
-      font-family:'Bebas Neue',cursive;
-      font-size:2rem;
-      margin-bottom:1rem;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-    /* Carrusel */
+
+    /* Carrusel de video */
     .video-frame {
-      position:relative;
-      width:100%;
-      padding-bottom:56.25%;
-      overflow:hidden;
-      border-radius:12px;
-      box-shadow:0 4px 15px rgba(0,0,0,0.5);
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
     .video-frame iframe {
-      position:absolute; top:0; left:0;
-      width:100%; height:100%;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
     .video-nav {
-      display:flex; justify-content:center; gap:1rem;
-      margin-top:1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
     }
     .video-nav button {
-      border:none;
-      background:var(--fg);
-      color:var(--bg);
-      width:3rem; height:3rem;
-      border-radius:50%;
-      font-size:1.5rem;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer;
-      transition:transform .2s,background .3s;
+      border: none;
+      background: var(--fg);
+      color: var(--bg);
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform .2s, background .3s;
     }
     .video-nav button:disabled {
-      opacity:.4; cursor:default;
+      opacity: .4; cursor: default;
     }
     .video-nav button:focus {
-      outline:2px solid var(--fg);
+      outline: 2px solid var(--fg);
     }
-    /* Servicios */
+
+    /* Sección Servicios */
     .cards {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:1rem;
-      margin-top:1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
     }
     .service-card {
-      background:rgba(18,18,18,0.6);
-      padding:1.5rem;
-      border-radius:12px;
-      transition:transform .3s,box-shadow .3s;
+      background: rgba(18,18,18,0.6);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform .3s, box-shadow .3s;
     }
     .service-card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 8px 20px rgba(0,0,0,0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
+
     /* Formularios */
-    form {
-      display:grid; gap:.5rem;
-    }
+    form { display: grid; gap: .5rem; }
     label {
-      font-weight:500;
-      display:flex;
-      flex-direction:column;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
     }
     input, textarea {
-      padding:.5rem;
-      border:none;
-      border-radius:6px;
-      background:rgba(255,255,255,0.1);
-      color:var(--fg);
-      font-family:inherit;
+      padding: .5rem;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: var(--fg);
+      font-family: inherit;
     }
     .action-button {
-      padding:.5rem 1rem;
-      border:none;
-      border-radius:30px;
-      background:var(--fg);
-      color:var(--bg);
-      font-family:'Bebas Neue',cursive;
-      cursor:pointer;
-      align-self:start;
-      box-shadow:0 4px 12px rgba(0,0,0,0.3);
-      transition:transform .2s;
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 30px;
+      background: var(--fg);
+      color: var(--bg);
+      font-family: 'Bebas Neue', cursive;
+      cursor: pointer;
+      align-self: start;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform .2s;
     }
     .action-button:hover {
-      transform:scale(1.05);
+      transform: scale(1.05);
     }
+
     /* Barra de progreso */
     #progress {
-      position:fixed; top:0; left:0;
-      height:4px; background:var(--fg);
-      width:0; z-index:1001;
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      background: var(--fg);
+      width: 0;
+      z-index: 10001;
     }
+
     /* Animaciones ligeras */
     [data-animate] {
-      opacity:0; transform:translateY(20px);
-      transition:opacity .6s ease-out,transform .6s ease-out;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
     }
     [data-animate].visible {
-      opacity:1; transform:translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
-    /* Responsive */
+
     @media(min-width:700px){
-      .cards { grid-template-columns:repeat(3,1fr); }
+      .cards { grid-template-columns: repeat(3,1fr); }
     }
   </style>
 </head>
@@ -194,9 +218,9 @@
 
   <header class="logo" data-animate>
     <picture>
-      <source srcset="logo.avif" type="image/avif">
-      <source srcset="logo.webp" type="image/webp">
-      <img src="logo.png" alt="Periplo Studio Logo">
+      <source srcset="LOGO_PeriploStudion-03.avif" type="image/avif">
+      <source srcset="LOGO_PeriploStudion-03.webp" type="image/webp">
+      <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
     </picture>
   </header>
 
@@ -261,12 +285,12 @@
   </footer>
 
   <script>
-    // Modo claro/oscuro
+    // Detecta tema claro/oscuro
     if (window.matchMedia('(prefers-color-scheme: light)').matches) {
       document.body.classList.add('light');
     }
 
-    // Carrusel con disabled
+    // Carrusel con estados disabled
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
       'https://www.youtube.com/embed/Q88Erleku84',
@@ -300,13 +324,13 @@
     });
     updateButtons();
 
-    // Swipe
+    // Swipe en móvil
     let xStart = null;
     const frame = document.getElementById('videoFrame');
     frame.addEventListener('touchstart', e => { xStart = e.touches[0].clientX; });
     frame.addEventListener('touchend', e => {
       if (!xStart) return;
-      let xEnd = e.changedTouches[0].clientX;
+      const xEnd = e.changedTouches[0].clientX;
       if (xEnd - xStart > 50) prevBtn.click();
       if (xStart - xEnd > 50) nextBtn.click();
       xStart = null;
@@ -319,7 +343,7 @@
       prog.style.width = (p.scrollTop / (p.scrollHeight - p.clientHeight)) * 100 + '%';
     });
 
-    // IntersectionObserver
+    // Animaciones con IntersectionObserver
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -332,3 +356,4 @@
   </script>
 </body>
 </html>
+```
