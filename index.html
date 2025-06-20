@@ -1,239 +1,230 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Periplo Studio</title>
-  <meta name="description" content="Periplo Studio: producción audiovisual con precisión técnica y tacto creativo.">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Periplo Studio">
-  <meta property="og:description" content="Producción audiovisual con precisión técnica y tacto creativo.">
-  <meta property="og:image" content="https://tusitio.com/og-image.jpg">
-  <meta property="og:url" content="https://tusitio.com">
-  <meta property="og:type" content="website">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Periplo Studio">
-  <meta name="twitter:description" content="Producción audiovisual con precisión técnica y tacto creativo.">
-  <meta name="twitter:image" content="https://tusitio.com/twitter-image.jpg">
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" href="favicon.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="msapplication-TileImage" content="mstile-150x150.png">
-  
+  <meta name="description" content="Producción audiovisual con precisión y creatividad.">
   <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    /* Variables de color */
     :root {
-      --bg: #121212;
-      --fg: #f3ead5;
-    }
-    .light {
-      --bg: #f3ead5;
-      --fg: #121212;
-    }
-    *, *::before, *::after {
-      box-sizing: border-box;
+      --bg: #f9f9f9;
+      --fg: #333;
+      --accent: #ff6f61;
     }
     body {
       margin: 0;
-      padding-top: 4rem;            /* espacio para la nav fija */
+      font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--fg);
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
     }
-    a { color: var(--fg); text-decoration: none; }
-    a:hover { opacity: 0.8; }
-
-    header, main, nav, section, footer { display: block; }
-
-    /* NAV fija */
-    nav[role="navigation"] {
-      position: fixed;
+    a {
+      color: var(--fg);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    a:hover {
+      color: var(--accent);
+    }
+    /* Navegación */
+    nav {
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(18,18,18,0.95);
-      padding: 1rem 0;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(6px);
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      z-index: 10000;
+      gap: 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+      z-index: 10;
     }
     nav a {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      padding: .5rem 1rem;
-      border-radius: 20px;
-      background: rgba(243,234,213,0.1);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 0.25rem;
+      position: relative;
     }
-
-    .logo {
+    nav a::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 0;
+      left: 0; bottom: -2px;
+      background: var(--accent);
+      transition: width .2s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    /* Hero */
+    .hero {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 4rem 1rem 2rem;
     }
-    .logo picture img {
-      max-width: 200px;
+    .hero img {
+      max-width: 180px;
       height: auto;
-    }
-
-    main {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2rem;
       margin-bottom: 1rem;
     }
-
+    .hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--fg);
+    }
+    /* Secciones */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      height: 3px;
+      width: 50px;
+      background: var(--accent);
+      display: block;
+      margin-top: 0.5rem;
+      border-radius: 2px;
+    }
     /* Carrusel de video */
     .video-frame {
       position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
+      padding-top: 56.25%;
       overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .video-frame iframe {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      border: none;
     }
     .video-nav {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      justify-content: space-between;
       margin-top: 1rem;
     }
     .video-nav button {
+      background: var(--accent);
       border: none;
-      background: var(--fg);
-      color: var(--bg);
-      width: 3rem; height: 3rem;
+      color: white;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
-      font-size: 1.5rem;
-      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: transform .2s, background .3s;
+      transition: background .2s, transform .2s;
     }
     .video-nav button:disabled {
-      opacity: .4; cursor: default;
+      background: #ddd;
+      cursor: default;
     }
-    .video-nav button:focus {
-      outline: 2px solid var(--fg);
+    .video-nav button:hover:not(:disabled) {
+      transform: scale(1.1);
     }
-
-    /* Sección Servicios */
+    /* Servicios */
     .cards {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1.5rem;
+    }
+    @media(min-width:700px) {
+      .cards { grid-template-columns: repeat(3,1fr); }
     }
     .service-card {
-      background: rgba(18,18,18,0.6);
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 8px;
       padding: 1.5rem;
-      border-radius: 12px;
-      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: box-shadow .2s, transform .2s;
     }
     .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
     }
-
+    .service-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
     /* Formularios */
-    form { display: grid; gap: .5rem; }
+    form {
+      display: grid;
+      gap: 1rem;
+    }
     label {
-      font-weight: 500;
       display: flex;
       flex-direction: column;
+      font-size: 0.9rem;
     }
     input, textarea {
-      padding: .5rem;
-      border: none;
+      margin-top: 0.25rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      background: rgba(255,255,255,0.1);
-      color: var(--fg);
       font-family: inherit;
+      font-size: 0.9rem;
     }
-    .action-button {
-      padding: .5rem 1rem;
+    .button-primary {
+      background: var(--accent);
+      color: white;
       border: none;
-      border-radius: 30px;
-      background: var(--fg);
-      color: var(--bg);
-      font-family: 'Bebas Neue', cursive;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
-      align-self: start;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform .2s;
+      transition: background .2s;
+      width: max-content;
     }
-    .action-button:hover {
-      transform: scale(1.05);
+    .button-primary:hover {
+      background: #e55b50;
     }
-
-    /* Barra de progreso */
-    #progress {
-      position: fixed;
-      top: 0; left: 0;
-      height: 4px;
-      background: var(--fg);
-      width: 0;
-      z-index: 10001;
-    }
-
-    /* Animaciones ligeras */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .6s ease-out, transform .6s ease-out;
-    }
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media(min-width:700px){
-      .cards { grid-template-columns: repeat(3,1fr); }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-  <div id="progress"></div>
 
   <nav role="navigation">
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="#cotizacion">Cotización</a>
+    <a href="#cotizacion">Cotizar</a>
     <a href="#trabaja">Trabaja</a>
   </nav>
 
-  <header class="logo" data-animate>
-    <picture>
-      <source srcset="LOGO_PeriploStudion-03.avif" type="image/avif">
-      <source srcset="LOGO_PeriploStudion-03.webp" type="image/webp">
-      <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
-    </picture>
+  <header class="hero">
+    <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo">
+    <h1>Periplo Studio</h1>
   </header>
 
   <main>
-    <section data-animate>
-      <h2>Visión y esencia</h2>
-      <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad.</p>
-    </section>
-
-    <section id="trabajos" data-animate>
+    <section id="trabajos">
       <h2>Trabajos</h2>
-      <div class="video-frame" id="videoFrame">
-        <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" loading="lazy" allowfullscreen></iframe>
+      <div class="video-frame">
+        <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-nav">
         <button id="prevBtn" aria-label="Anterior" disabled>&#9664;</button>
@@ -241,56 +232,69 @@
       </div>
     </section>
 
-    <section id="servicios" data-animate>
+    <section id="servicios">
       <h2>Servicios</h2>
       <div class="cards">
-        <div class="service-card" data-animate>
+        <div class="service-card">
           <h3>Producción por proyecto</h3>
           <p>Entrevistas, lanzamientos, registros. Incluye dron, audio, postproducción y entrega final.</p>
         </div>
-        <div class="service-card" data-animate>
+        <div class="service-card">
           <h3>Producción mensual</h3>
           <p>Contenidos periódicos para redes y comunicación interna. Plan editorial y equipo completo.</p>
         </div>
-        <div class="service-card" data-animate>
+        <div class="service-card">
           <h3>Producción integral</h3>
           <p>Cámaras, dron, audio, edición, licencias y transporte. Bajo una tarifa mensual fija.</p>
         </div>
       </div>
     </section>
 
-    <section id="cotizacion" data-animate>
+    <section id="cotizacion">
       <h2>Inicia tu proyecto</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label>Nombre o empresa<input type="text" name="Nombre o empresa" required></label>
-        <label>Descripción<textarea name="Descripción" required></textarea></label>
-        <label>Detalles<textarea name="Detalles"></textarea></label>
-        <button type="submit" class="action-button">Enviar solicitud</button>
+        <label>
+          Nombre o empresa
+          <input type="text" name="Nombre o empresa" required>
+        </label>
+        <label>
+          Descripción
+          <textarea name="Descripción" required></textarea>
+        </label>
+        <label>
+          Detalles
+          <textarea name="Detalles"></textarea>
+        </label>
+        <button type="submit" class="button-primary">Enviar solicitud</button>
       </form>
     </section>
 
-    <section id="trabaja" data-animate>
+    <section id="trabaja">
       <h2>Trabaja con nosotros</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label>Nombre completo<input type="text" name="Nombre completo" required></label>
-        <label>Contacto<input type="text" name="Contacto" required></label>
-        <label>Experiencia<textarea name="Experiencia" required></textarea></label>
-        <button type="submit" class="action-button">Enviar aplicación</button>
+        <label>
+          Nombre completo
+          <input type="text" name="Nombre completo" required>
+        </label>
+        <label>
+          Contacto (email o teléfono)
+          <input type="text" name="Contacto" required>
+        </label>
+        <label>
+          Experiencia y habilidades
+          <textarea name="Experiencia" required></textarea>
+        </label>
+        <button type="submit" class="button-primary">Enviar aplicación</button>
       </form>
     </section>
   </main>
 
-  <footer data-animate>
-    <p>&copy; 2025 Periplo Studio. Hecho con código y café.</p>
+  <footer>
+    &copy; 2025 Periplo Studio. Hecho con código y café.
   </footer>
 
   <script>
-    // Detecta tema claro/oscuro
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      document.body.classList.add('light');
-    }
-
-    // Carrusel con estados disabled
+    // Carrusel simple
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
       'https://www.youtube.com/embed/Q88Erleku84',
@@ -300,60 +304,17 @@
       'https://www.youtube.com/embed/gqyrazOetYY',
       'https://www.youtube.com/embed/4ZoNwZuYqWo'
     ];
-    let current = 0;
+    let idx = 0;
     const player = document.getElementById('videoPlayer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    function updateButtons() {
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === videos.length - 1;
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+    function upd() {
+      prev.disabled = idx === 0;
+      next.disabled = idx === videos.length - 1;
     }
-    prevBtn.addEventListener('click', () => {
-      if (current > 0) {
-        current--;
-        player.src = videos[current];
-        updateButtons();
-      }
-    });
-    nextBtn.addEventListener('click', () => {
-      if (current < videos.length - 1) {
-        current++;
-        player.src = videos[current];
-        updateButtons();
-      }
-    });
-    updateButtons();
-
-    // Swipe en móvil
-    let xStart = null;
-    const frame = document.getElementById('videoFrame');
-    frame.addEventListener('touchstart', e => { xStart = e.touches[0].clientX; });
-    frame.addEventListener('touchend', e => {
-      if (!xStart) return;
-      const xEnd = e.changedTouches[0].clientX;
-      if (xEnd - xStart > 50) prevBtn.click();
-      if (xStart - xEnd > 50) nextBtn.click();
-      xStart = null;
-    });
-
-    // Barra de progreso
-    const prog = document.getElementById('progress');
-    window.addEventListener('scroll', () => {
-      const p = document.documentElement;
-      prog.style.width = (p.scrollTop / (p.scrollHeight - p.clientHeight)) * 100 + '%';
-    });
-
-    // Animaciones con IntersectionObserver
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: .1 });
-    document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+    prev.onclick = () => { if(idx>0) { player.src = videos[--idx]; upd(); } };
+    next.onclick = () => { if(idx<videos.length-1) { player.src = videos[++idx]; upd(); } };
+    upd();
   </script>
 </body>
 </html>
-```
