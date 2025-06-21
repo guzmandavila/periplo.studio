@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #121212;
+      --bg: #000000; /* Negro cine */
       --fg: #f3ead5;
       --accent: #e8dfc5;
     }
@@ -30,36 +30,37 @@
 
     header, main, nav, section, footer { display: block; }
 
-    /* Navegación futurista (inspirada en macOS Sonoma) */
+    /* Navegación estilo GNOME, minimal sin glow */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(18, 18, 18, 0.5);
-      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: none;
       display: flex;
       justify-content: center;
       gap: 1rem;
       padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       z-index: 1000;
     }
     nav a {
       font-weight: 600;
       text-transform: uppercase;
       font-size: 0.8rem;
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border: none;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      background: transparent;
       color: var(--fg);
-      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-      text-shadow: 0 0 1px rgba(0,0,0,0.5);
+      transition: background 0.2s ease, color 0.2s ease;
+      text-shadow: none;
     }
     nav a:hover {
-      background: var(--accent);
-      color: var(--bg);
-      box-shadow: 0 0 6px var(--accent);
+      background: rgba(243,234,213,0.1);
+      color: var(--accent);
+      box-shadow: none;
     }
     nav a.cta {
       background: var(--accent);
@@ -70,10 +71,24 @@
     nav a.cta:hover {
       background: var(--fg);
       color: var(--bg);
-      box-shadow: 0 0 6px var(--accent);
     }
 
     @media(max-width:600px) {
+      nav {
+        gap: 0.5rem;
+        padding: 0.25rem 0;
+      }
+      nav a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+      }
+      nav a.cta {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+      }
+    }
+
+    /* Hero / Logo */(max-width:600px) {
       nav {
         gap: 0.5rem;
         padding: 0.25rem 0;
