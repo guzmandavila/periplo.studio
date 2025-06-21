@@ -16,6 +16,11 @@
       --fg: #f3ead5;
       --accent: #e8dfc5;
     }
+    .light {
+      --bg: #f3ead5;
+      --fg: #000000;
+      --accent: #121212;
+    }
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
@@ -223,6 +228,7 @@
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
+    <button id="themeToggle" aria-label="Cambiar tema" style="background:transparent;border:none;color:var(--fg);font-size:1.2rem;cursor:pointer;">🌓</button>
   </nav>
   <header class="hero">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
@@ -285,10 +291,12 @@
   </main>
   <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
   <script>
+    // Carrusel de videos
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
+      'https://www.youtube.com/embed/Q88Erleku84',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
-      'https://www.youtube.com/embed/e9wMxOjAc5c',
+      'https://www.youtube.com/embed/e9wMxjxAc5c',
       'https://www.youtube.com/embed/vH5tkyOjVJo',
       'https://www.youtube.com/embed/gqyrazOetYY',
       'https://www.youtube.com/embed/4ZoNwZuYqWo',
@@ -299,10 +307,37 @@
     const player = document.getElementById('videoPlayer');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
-    prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; player.src = videos[idx]; updateButtons(); }});
-    nextBtn.addEventListener('click', () => { if (idx < videos.length - 1) { idx++; player.src = videos[idx]; updateButtons(); }});
+    function updateButtons() {
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === videos.length - 1;
+    }
+    prevBtn.addEventListener('click', () => {
+      if (idx > 0) {
+        idx--;
+        player.src = videos[idx];
+        updateButtons();
+      }
+    });
+    nextBtn.addEventListener('click', () => {
+      if (idx < videos.length - 1) {
+        idx++;
+        player.src = videos[idx];
+        updateButtons();
+      }
+    });
     updateButtons();
+
+    // Toggle tema claro/oscuro
+    const toggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+      document.body.classList.add('light');
+    }
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const theme = document.body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+    });
   </script>
 </body>
 </html>
