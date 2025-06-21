@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Colabora con Periplo Studio</title>
+  <meta name="description" content="Únete a nuestra red global de productores audiovisuales.">
+  <link rel="icon" href="favicon.png" sizes="16x16">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --fg: #f3ead5;
+      --accent: #e8dfc5;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin:0; padding:4rem 1rem; background:var(--bg); color:var(--fg); font-family:'Poppins',sans-serif; }
+    a { color:var(--accent); text-decoration:none; }
+    nav { position:fixed; top:0; left:0; width:100%; background:#111; display:flex; justify-content:center; gap:1rem; padding:0.5rem 0; z-index:1000; }
+    nav a { font-weight:600; text-transform:uppercase; font-size:0.8rem; padding:0.3rem 0.8rem; }
+    nav a:hover { background:rgba(243,234,213,0.15); color:var(--accent); border-radius:4px; }
+    header { text-align:center; margin-bottom:2rem; }
+    header h1 { font-family:'Bebas Neue',cursive; font-size:2.5rem; color:var(--accent); margin:0; }
+    main { max-width:800px; margin:0 auto; }
+    .network { margin:2rem 0; }
+    .network ul { list-style:none; padding:0; }
+    .network li { margin:0.5rem 0; }
+    .cta-form { background:rgba(30,30,30,0.9); padding:2rem; border-radius:8px; }
+    .cta-form label { display:block; margin-bottom:1rem; }
+    .cta-form input, .cta-form textarea { width:100%; padding:0.75rem; border:1px solid #333; border-radius:4px; background:#1e1e1e; color:var(--fg); }
+    .cta-form button { background:var(--accent); color:var(--bg); border:none; padding:0.75rem 1.5rem; border-radius:4px; cursor:pointer; font-weight:600; }
+    footer { text-align:center; margin-top:4rem; font-size:0.8rem; color:rgba(243,234,213,0.7); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="index.html#trabajos">Trabajos</a>
+    <a href="index.html">Inicio</a>
+  </nav>
+  <header>
+    <h1>Colabora con nosotros</h1>
+  </header>
+  <main>
+    <section class="network">
+      <h2>Red Global</h2>
+      <p>Somos una red de productores en:</p>
+      <ul>
+        <li>Argentina</li>
+        <li>Estados Unidos</li>
+        <li>España</li>
+        <li>Chile</li>
+        <li>Portugal</li>
+        <li>Colombia</li>
+        <li>México</li>
+      </ul>
+    </section>
+    <section class="cta-form">
+      <h2>Únete a nuestra red</h2>
+      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
+        <label>Nombre Completo
+          <input type="text" name="Nombre" required>
+        </label>
+        <label>País de Residencia
+          <input type="text" name="Pais" required>
+        </label>
+        <label>Habilidades y Experiencia
+          <textarea name="Experiencia" required></textarea>
+        </label>
+        <label>Portafolio / Enlaces
+          <input type="text" name="Portafolio">
+        </label>
+        <button type="submit">Enviar aplicación</button>
+      </form>
+    </section>
+  </main>
+  <footer>&copy; 2025 Periplo Studio</footer>
+</body>
+</html>
