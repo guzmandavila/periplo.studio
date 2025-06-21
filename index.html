@@ -40,9 +40,52 @@
       backdrop-filter: blur(20px) saturate(180%);
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      padding: 0.75rem 0;
+      gap: 1rem;
+      padding: 0.5rem 0;
       z-index: 1000;
+    }
+    nav a {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--fg);
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      text-shadow: 0 0 1px rgba(0,0,0,0.5);
+    }
+    nav a:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 6px var(--accent);
+    }
+    nav a.cta {
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.85rem;
+      padding: 0.3rem 0.9rem;
+    }
+    nav a.cta:hover {
+      background: var(--fg);
+      color: var(--bg);
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    @media(max-width:600px) {
+      nav {
+        gap: 0.5rem;
+        padding: 0.25rem 0;
+      }
+      nav a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+      }
+      nav a.cta {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+      }
     }
     nav a {
       font-weight: 600;
@@ -274,9 +317,9 @@
 
   <script>
     // Carrusel completo con todos los videos
+    // Carrusel completo con todos los videos (segundo eliminado)
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
-      'https://www.youtube.com/embed/Q88Erleku84',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
       'https://www.youtube.com/embed/e9wMxjxAc5c',
       'https://www.youtube.com/embed/vH5tkyOjVJo',
