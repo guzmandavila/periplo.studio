@@ -44,15 +44,12 @@
     .service-card h3{font-family:'Bebas Neue',cursive;font-size:1.6rem;text-transform:uppercase;background:linear-gradient(135deg,var(--accent) 0%,rgba(196,159,110,.8)100%);-webkit-background-clip:text;color:transparent;position:relative;padding-bottom:.5rem;}
     .service-card h3::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:4px;background:var(--accent);border-radius:2px;}
     #servicios em{display:block;margin-top:1rem;font-style:italic;color:rgba(234,225,210,.7);}
-    /* Cotización */
-    section#cotizacion{margin-top:2rem;}
-    form{display:grid;gap:1rem;}
-    label{display:flex;flex-direction:column;font-size:.9rem;}
-    input,textarea{margin-top:.25rem;padding:.75rem;border:1px solid #333;border-radius:6px;background:#1e1e1e;color:var(--fg);font-family:inherit;}
-    .button-primary{background:transparent;color:var(--accent);border:1px solid var(--accent);padding:.75rem 1.5rem;border-radius:6px;font-size:.9rem;cursor:pointer;transition:background .2s,color .2s;width:max-content;}
-    .button-primary:hover{background:var(--accent);color:var(--bg);}
+    /* Contacto */
+    .contact-icons{display:flex;justify-content:center;gap:1.5rem;margin:2rem 0;}
+    .contact-icon{font-size:2.5rem;transition:transform .2s;color:var(--accent);text-decoration:none;}
+    .contact-icon:hover{transform:scale(1.2);}
+    /* Footer */
     footer{text-align:center;padding:2rem 1rem;font-size:.8rem;color:#777;border-top:1px solid rgba(234,225,210,.1);}
-    /* Responsive */
     @media(max-width:600px){.hero img{width:100%;height:auto;}}
   </style>
 </head>
@@ -84,7 +81,7 @@
     </section>
     <section id="servicios">
       <h2 data-es="Alquimia Creativa" data-en="Creative Alchemy">Alquimia Creativa</h2>
-      <p data-es="¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, no somos una agencia de publicidad: somos tu equipo audiovisual dedicado." data-en="Want to shine without logistics worries? At Periplo Studio we follow your strategy or idea—we're not an ad agency, but your dedicated audiovisual team.">¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado.</p>
+      <p data-es="¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado." data-en="Want to shine without logistics worries? At Periplo Studio we follow your strategy or idea—we're not an ad agency, but your dedicated audiovisual team.">¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado.</p>
       <div class="cards">
         <div class="service-card">
           <h3 data-es="Producción por proyecto" data-en="Project-based Production">Producción por proyecto</h3>
@@ -92,7 +89,7 @@
         </div>
         <div class="service-card">
           <h3 data-es="Producción mensual" data-en="Monthly Production">Producción mensual</h3>
-          <p data-es="Mantén tu marca viva con contenido constante: videos para redes, campañas y comunicación interna. Trabajamos contigo mes a mes, sin compromisos largos, adaptándonos a tu ritmo." data-en="Keep your brand alive with steady content: videos for social, campaigns, and internal comms. We work with you month-to-month, no long contracts, adapting at your pace.">Manten tu marca viva con contenido constante: videos para redes, campañas y comunicación interna. Trabajamos contigo mes a mes, sin compromisos largos, adaptándonos a tu ritmo.</p>
+          <p data-es="Mantén tu marca viva con contenido constante: videos para redes, campañas y comunicación interna. Trabajamos contigo mes a mes, sin compromisos largos, adaptándonos a tu ritmo." data-en="Keep your brand alive with steady content: videos for social, campaigns, and internal comms. We work with you month-to-month, no long contracts, adapting at your pace.">Mantén tu marca viva con contenido constante: videos para redes, campañas y comunicación interna. Trabajamos contigo mes a mes, sin compromisos largos, adaptándonos a tu ritmo.</p>
         </div>
         <div class="service-card">
           <h3 data-es="Producción integral" data-en="Full-service Production">Producción integral</h3>
@@ -100,14 +97,12 @@
         </div>
       </div>
     </section>
-    <section id="cotizacion">
-      <h2 data-es="Comienza tu viaje" data-en="Start Your Journey">Comienza tu viaje</h2>
-      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label data-es="Nombre o empresa" data-en="Name or Company">Nombre o empresa<input type="text" name="Nombre o empresa" required></label>
-        <label data-es="Descripción" data-en="Description">Descripción<textarea name="Descripción" required></textarea></label>
-        <label data-es="Otros detalles imprescindibles" data-en="Other Essential Details">Otros detalles imprescindibles<textarea name="Detalles"></textarea></label>
-        <button type="submit" class="button-primary" data-es="Enviar solicitud" data-en="Send Request">Enviar solicitud</button>
-      </form>
+    <section id="contacto">
+      <h2 data-es="Contáctanos" data-en="Get in Touch">Contáctanos</h2>
+      <div class="contact-icons">
+        <a href="mailto:info@periplo.studio" aria-label="Email" class="contact-icon">📧</a>
+        <a href="https://wa.me/593979864314" target="_blank" aria-label="WhatsApp" class="contact-icon">💬</a>
+      </div>
     </section>
   </main>
   <footer data-es="Hecho con código y café." data-en="Made with code and coffee.">&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
@@ -124,11 +119,11 @@
       'https://www.youtube.com/embed/7koHWpFCJFs'
     ];
     let idx=0; const player=document.getElementById('videoPlayer'); const prevBtn=document.getElementById('prevBtn'); const nextBtn=document.getElementById('nextBtn');
-    function updateButtons(){prevBtn.disabled=idx===0; nextBtn.disabled=idx===videos.length-1;} prevBtn.addEventListener('click',()=>{if(idx>0){idx--;player.src=videos[idx];updateButtons();}}); nextBtn.addEventListener('click',()=>{if(idx<videos.length-1){idx++;player.src=videos[idx];updateButtons();}}); updateButtons();
+    function updateButtons(){prevBtn.disabled=idx===0;nextBtn.disabled=idx===videos.length-1;} prevBtn.addEventListener('click',()=>{if(idx>0){idx--;player.src=videos[idx];updateButtons();}}); nextBtn.addEventListener('click',()=>{if(idx<videos.length-1){idx++;player.src=videos[idx];updateButtons();}}); updateButtons();
     // Hide/show nav on scroll
-    let lastScroll=window.pageYOffset; const navbar=document.getElementById('navbar'); window.addEventListener('scroll',()=>{let current=window.pageYOffset; navbar.style.top=current>lastScroll?'-60px':'0'; lastScroll=current<=0?0:current;});
+    let lastScroll=window.pageYOffset; const navbar=document.getElementById('navbar'); window.addEventListener('scroll',()=>{let current=window.pageYOffset;navbar.style.top=current>lastScroll?'-60px':'0';lastScroll=current<=0?0:current;});
     // Language toggle
-    const toggle=document.getElementById('langToggle'); const elements=document.querySelectorAll('[data-es]'); let lang='es'; toggle.addEventListener('click',()=>{lang=lang==='es'?'en':'es'; toggle.textContent=lang==='es'?'EN':'ES'; elements.forEach(el=>el.textContent=el.getAttribute(`data-${lang}`)); const titleEl=document.querySelector('title'); titleEl.textContent=titleEl.getAttribute(`data-${lang}`); const metaDesc=document.querySelector('meta[name="description"]'); metaDesc.content=metaDesc.getAttribute(`data-${lang}`); document.documentElement.lang=lang;});
+    const toggle=document.getElementById('langToggle'); const elements=document.querySelectorAll('[data-es]'); let lang='es'; toggle.addEventListener('click',()=>{lang=lang==='es'?'en':'es';toggle.textContent=lang==='es'?'EN':'ES';elements.forEach(el=>el.textContent=el.getAttribute(`data-${lang}`));const titleEl=document.querySelector('title');titleEl.textContent=titleEl.getAttribute(`data-${lang}`);const metaDesc=document.querySelector('meta[name="description"]');metaDesc.content=metaDesc.getAttribute(`data-${lang}`);document.documentElement.lang=lang;});
   </script>
 </body>
 </html>
