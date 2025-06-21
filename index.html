@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Periplo Studio</title>
   <meta name="description" content="Producción audiovisual con precisión y creatividad.">
   <!-- Favicons -->
@@ -193,8 +193,10 @@
       color: rgba(243,234,213,0.7);
     }
 
-    /* Formularios */
-    section#cotizacion, section#trabaja { margin-top: 2rem; }
+    /* Cotización */
+    section#cotizacion {
+      margin-top: 2rem;
+    }
     form { display: grid; gap: 1rem; }
     label { display: flex; flex-direction: column; font-size: .9rem; }
     input, textarea {
@@ -235,7 +237,7 @@
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="colabora.html">Colabora con nosotros</a>
+    <a href="colabora.html" class="cta">Colabora con nosotros</a>
   </nav>
   <header class="hero">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
@@ -282,41 +284,3 @@
         <label>Descripción<textarea name="Descripción" required></textarea></label>
         <label>Otros detalles imprescindibles<textarea name="Detalles"></textarea></label>
         <button type="submit" class="button-primary">Enviar solicitud</button>
-      </form>
-    </section>
-    <section id="trabaja">
-      <p>¿Traes la sabiduría acumulada del camino o el fuego de una idea fresca? En Periplo Studio <strong>comenzamos desde abajo</strong>, valoramos la pasión y la creatividad por igual. Solo necesitas ganas de aprender y narrar historias que inspiren.</p>
-      <p>Somos una <strong>red global de productores</strong> con apoyo de grandes mentes en Argentina, Estados Unidos, España, Chile, Portugal, Colombia y México. Juntos soñamos con estar conectados y llevar tu proyecto a cualquier rincón del mundo.</p>
-      <p>Únete a nuestro equipo y descubre cómo tus ideas pueden cobrar vida sin barreras ni burocracia. Aquí nos apoyamos mutuamente y crecemos con cada proyecto.</p>
-      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label>Nombre completo<input type="text" name="Nombre completo" required></label>
-        <label>Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
-        <label>Cuéntanos tu motivación<textarea name="Motivación" required></textarea></label>
-        <button type="submit" class="button-primary">Enviar aplicación</button>
-      </form>
-    </section>
-  </main>
-  <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
-  <script>
-    const videos = [
-      'https://www.youtube.com/embed/rhUEiaQfEJ4',
-      'https://www.youtube.com/embed/Q88Erku84',
-      'https://www.youtube.com/embed/fsBp5IUqhdg',
-      'https://www.youtube.com/embed/e9wMxjxAc5c',
-      'https://www.youtube.com/embed/vH5tkyOjVJo',
-      'https://www.youtube.com/embed/gqyrazOetYY',
-      'https://www.youtube.com/embed/4ZoNwZuYqWo',
-      'https://www.youtube.com/embed/CfwpyJeH-tM',
-      'https://www.youtube.com/embed/7koHWpFCJFs'
-    ];
-    let idx = 0;
-    const player = document.getElementById('videoPlayer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
-    prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; player.src = videos[idx]; updateButtons(); }});
-    nextBtn.addEventListener('click', () => { if (idx < videos.length - 1) { idx++; player.src = videos[idx]; updateButtons(); }});
-    updateButtons();
-  </script>
-</body>
-</html>
