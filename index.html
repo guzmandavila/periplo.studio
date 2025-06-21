@@ -35,18 +35,15 @@
       background: #111; display: flex; justify-content: center; gap: 0.5rem;
       padding: 0.25rem 0; border-bottom: 1px solid rgba(234,225,210,0.1);
       z-index: 1000;
+      transition: top 0.3s;
     }
     nav a {
       font-weight: 600; text-transform: uppercase; font-size: .7rem;
       padding: .25rem .6rem; border-radius: 4px;
-      transition: background .2s, color .2s;
+      transition: background .2s;
     }
     nav a:hover {
       background: rgba(234,225,210,0.15);
-    }
-    nav a.cta {
-      background: var(--accent); color: var(--bg);
-      padding: .25rem .6rem; border-radius: 4px;
     }
 
     /* Hero */
@@ -139,7 +136,7 @@
   </style>
 </head>
 <body>
-  <nav>
+  <nav id="navbar">
     <a href="#trabajos">Obras en Acción</a>
     <a href="#servicios">Alquimia Creativa</a>
     <a href="#cotizacion">Comienza tu viaje</a>
@@ -180,7 +177,7 @@
           <p>Olvídate de ser in-house o de invertir en equipos costosos: cámaras, dron, audio, edición y licencias en un solo paquete. Te liberamos de nóminas y logística, eliminando dolores de cabeza y costes ocultos.</p>
         </div>
       </div>
-      <p style="margin-top:1rem; font-weight:600;">Necesitas un equipo como nosotros para centrarte en tu creatividad: sin vínculos laborales, sin sorpresas y con la flexibilidad que tu proyecto merece.</p>
+      <p style="margin-top:1rem; font-weight:600;">Necesitas un equipo como nosotros para centrarte en tu creatividad: sin vínculos laborales, sin sorpresas y con la flexibilidad que tu proyecto merece.</p>
       <em>Elige la modalidad que potencia tu historia y deja la producción en manos de expertos.</em>
     </section>
     <section id="cotizacion">
@@ -195,10 +192,11 @@
   </main>
   <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
   <script>
+    // Slider
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
-      'https://www.youtube.com/embed/e9wMxjxAc5c',
+      'https://www.youtube.com/embed/e9wMxAc5c',
       'https://www.youtube.com/embed/vH5tkyOjVJo',
       'https://www.youtube.com/embed/gqyrazOetYY',
       'https://www.youtube.com/embed/4ZoNwZuYqWo',
@@ -209,10 +207,23 @@
     const player = document.getElementById('videoPlayer');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    function updateButtons() { prevBtn.disabled = idx===0; nextBtn.disabled= idx===videos.length-1; }
-    prevBtn.addEventListener('click', ()=>{ if(idx>0){ idx--; player.src=videos[idx]; updateButtons(); }});
-    nextBtn.addEventListener('click', ()=>{ if(idx<videos.length-1){ idx++; player.src=videos[idx]; updateButtons(); }});
+    function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
+    prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; player.src = videos[idx]; updateButtons(); }});
+    nextBtn.addEventListener('click', () => { if (idx < videos.length - 1) { idx++; player.src = videos[idx]; updateButtons(); }});
     updateButtons();
+
+    // Hide/show nav on scroll
+    let lastScroll = window.pageYOffset;
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll) {
+        navbar.style.top = '-60px';
+      } else {
+        navbar.style.top = '0';
+      }
+      lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    });
   </script>
 </body>
 </html>
