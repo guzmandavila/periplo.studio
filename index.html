@@ -117,16 +117,28 @@
       gap: 1rem;
     }
     .service-card:hover {
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transform: translateY(-6px);
     }
     .service-card h3 {
-      font-size: 1.5rem;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
       text-transform: uppercase;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--accent) 0%, rgba(232,237,213,0.8) 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      position: relative;
+      padding-bottom: .5rem;
+    }
+    .service-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
     }
     #servicios em {
       display: block; margin-top: 1rem; font-style: italic;
@@ -229,7 +241,7 @@
       <h2>Trabaja con nosotros</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
         <label>Nombre completo<input type="text" name="Nombre completo" required></label>
-        <label>Contacto (email o teléfono<input type="text" name="Contacto" required></label>
+        <label>Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
         <label>Experiencia y habilidades<textarea name="Experiencia" required></textarea></label>
         <button type="submit" class="button-primary">Enviar aplicación</button>
       </form>
@@ -242,6 +254,7 @@
     // Carrusel completo con todos los videos
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
+      'https://www.youtube.com/embed/Q88Erleku84',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
       'https://www.youtube.com/embed/e9wMxjxAc5c',
       'https://www.youtube.com/embed/vH5tkyOjVJo',
