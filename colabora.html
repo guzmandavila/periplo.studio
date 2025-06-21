@@ -9,53 +9,83 @@
   <link rel="shortcut icon" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #0a0a0a; --fg: #eae1d2; --accent: #c49f6e; }
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:'Poppins',sans-serif; display:flex; flex-direction:column; min-height:100vh; }
-    nav { position:sticky; top:0; background:rgba(10,10,10,0.85); backdrop-filter:blur(8px); display:flex; justify-content:center; padding:1rem; z-index:100; }
-    nav a { color:var(--fg); text-decoration:none; text-transform:uppercase; font-weight:600; padding:.5rem 1rem; border-radius:4px; transition:background .3s; font-size:.8rem; }
-    nav a.cta { background:var(--accent); color:var(--bg); }
-    nav a:hover { background:var(--accent); color:var(--bg); }
-    header { background:linear-gradient(135deg,rgba(10,10,10,0.9),rgba(20,20,20,0.7)),url('hero-bg.jpg') center/cover no-repeat; padding:6rem 1rem; text-align:center; }
-    header h1 { font-family:'Bebas Neue',cursive; font-size:3rem; margin:0; color:var(--accent); text-shadow:0 0 8px rgba(196,159,110,0.7); animation:fadeIn 1.5s ease-out; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
-    main { flex:1; max-width:800px; margin:2rem auto; padding:0 1rem; }
-    #colabora { background:rgba(30,30,30,0.5); padding:2rem; border-left:6px solid var(--accent); border-radius:8px; margin-bottom:2rem; animation:slideIn 1s ease-out; }
-    @keyframes slideIn { from{opacity:0;transform:translateX(-50px);}to{opacity:1;transform:translateX(0);} }
-    #colabora p { margin-bottom:1rem; line-height:1.6; }
-    .cta-form { background:#101010; padding:2rem; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.7); }
-    .cta-form h2 { font-family:'Bebas Neue',cursive; font-size:2rem; margin-bottom:1rem; color:var(--accent); text-align:center; }
-    .cta-form form { display:flex; flex-direction:column; gap:1rem; }
-    .cta-form label { display:flex; flex-direction:column; font-size:.9rem; font-weight:300; }
-    .cta-form input, .cta-form textarea { margin-top:.5rem; padding:.75rem; border:1px solid #333; border-radius:4px; background:#1a1a1a; color:var(--fg); font-family:inherit; }
-    .cta-form button { align-self:flex-start; background:var(--accent); color:var(--bg); border:none; padding:.75rem 2rem; border-radius:4px; font-size:.9rem; font-weight:600; cursor:pointer; transition:background .3s,transform .2s; }
-    .cta-form button:hover { background:#b38c5c; transform:translateY(-2px); }
-    footer { text-align:center; padding:1rem; font-size:.8rem; color:#555; }
+    :root { --bg:#0a0a0a; --fg:#eae1d2; --accent:#c49f6e; }
+    *,*::before,*::after{box-sizing:border-box;}
+    body{margin:0;padding-top:4rem;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--fg);display:flex;flex-direction:column;min-height:100vh;}
+    /* Navegación */
+    nav{position:fixed;top:0;left:0;width:100%;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);display:flex;justify-content:center;padding:1rem;z-index:100;transition:top .3s;}
+    nav a{font-weight:600;text-transform:uppercase;font-size:.8rem;padding:.5rem 1rem;border-radius:4px;transition:background .3s;cursor:pointer;text-decoration:none;color:var(--fg);}
+    nav a:hover{background:var(--accent);color:var(--bg);}
+
+    header{background:linear-gradient(135deg,rgba(10,10,10,0.9),rgba(20,20,20,0.7)),url('hero-bg.jpg') center/cover no-repeat;padding:6rem 1rem;text-align:center;}
+    header h1{font-family:'Bebas Neue',cursive;font-size:3rem;margin:0;color:var(--accent);text-shadow:0 0 8px rgba(196,159,110,0.7);}
+
+    main{flex:1;max-width:800px;margin:2rem auto;padding:0 1rem;}
+    #colabora{background:rgba(30,30,30,0.5);padding:2rem;border-left:6px solid var(--accent);border-radius:8px;animation:slideIn 1s ease-out;}
+    #colabora p{margin-bottom:1rem;line-height:1.6;}
+    @keyframes slideIn{from{opacity:0;transform:translateX(-50px);}to{opacity:1;transform:translateX(0);}}
+
+    .cta-form{background:#101010;padding:2rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.7);}
+    .cta-form h2{font-family:'Bebas Neue',cursive;font-size:2rem;margin-bottom:1rem;color:var(--accent);text-align:center;}
+    .cta-form form{display:flex;flex-direction:column;gap:1rem;}
+    .cta-form label{font-size:.9rem;font-weight:300;display:flex;flex-direction:column;}
+    .cta-form input,.cta-form textarea{margin-top:.5rem;padding:.75rem;border:1px solid #333;border-radius:4px;background:#1a1a1a;color:var(--fg);font-family:inherit;}
+    .cta-form button{align-self:flex-start;background:var(--accent);color:var(--bg);border:none;padding:.75rem 2rem;border-radius:4px;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .3s,transform .2s;}
+    .cta-form button:hover{background:#b38c5c;transform:translateY(-2px);}
+
+    footer{text-align:center;padding:1rem;font-size:.8rem;color:#555;}
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="cta">Regreso al Umbral</a>
+  <nav id="navbar">
+    <a id="btn-back" href="ritual-de-apertura.html" data-es="Regreso al Umbral" data-en="Return to Threshold">Regreso al Umbral</a>
+    <button class="lang-toggle" id="langToggle">EN</button>
   </nav>
+
   <header>
-    <h1>Colabora con Periplo Studio</h1>
+    <h1 data-es="Colabora con Periplo Studio" data-en="Collaborate with Periplo Studio">Colabora con Periplo Studio</h1>
   </header>
+
   <main>
     <section id="colabora">
-      <p>¿Traes la sabiduría acumulada del camino o el fuego de una idea fresca? En Periplo Studio <strong>comenzamos desde abajo</strong>, valoramos la pasión y la creatividad por igual. Solo necesitas ganas de aprender y narrar historias que inspiren.</p>
-      <p>Somos una <strong>red global de productores</strong> con apoyo de grandes mentes en Argentina, Estados Unidos, España, Chile, Portugal, Colombia y México. Juntos soñamos con estar conectados y llevar tu proyecto a cualquier rincón del mundo.</p>
-      <p>Únete a nuestro equipo y descubre cómo tus ideas pueden cobrar vida sin barreras ni burocracia. Aquí nos apoyamos mutuamente y crecemos con cada proyecto.</p>
+      <p data-es="¿Traes la sabiduría acumulada... narrar historias que inspiren." data-en="Do you bring years of wisdom... stories that inspire.">¿Traes la sabiduría acumulada del camino o el fuego de una idea fresca? En Periplo Studio <strong>comenzamos desde abajo</strong>, valoramos la pasión y la creatividad por igual. Solo necesitas ganas de aprender y narrar historias que inspiren.</p>
+      <p data-es="Somos una red global... cualquier rincón del mundo." data-en="We are a global network... every corner of the globe.">Somos una <strong>red global de productores</strong> con apoyo de grandes mentes en Argentina, Estados Unidos, España, Chile, Portugal, Colombia y México. Juntos soñamos con estar conectados y llevar tu proyecto a cualquier rincón del mundo.</p>
+      <p data-es="Únete a nuestro equipo... crecemos con cada proyecto." data-en="Join our team... we grow with every project.">Únete a nuestro equipo y descubre cómo tus ideas pueden cobrar vida sin barreras ni burocracia. Aquí nos apoyamos mutuamente y crecemos con cada proyecto.</p>
     </section>
+
     <section class="cta-form">
-      <h2>Únete a nuestra red</h2>
+      <h2 data-es="Únete a nuestra red" data-en="Join Our Network">Únete a nuestra red</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
-        <label>Nombre completo<input type="text" name="Nombre completo" required></label>
-        <label>Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
-        <label>Cuéntanos tu motivación<textarea name="Motivación" rows="4" required></textarea></label>
-        <button type="submit">Enviar aplicación</button>
+        <label data-es="Nombre completo" data-en="Full Name">Nombre completo<input type="text" name="Nombre completo" required></label>
+        <label data-es="Contacto (email o teléfono)" data-en="Contact (email or phone)">Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
+        <label data-es="Cuéntanos tu motivación" data-en="Tell us your motivation">Cuéntanos tu motivación<textarea name="Motivación" rows="4" required></textarea></label>
+        <button type="submit" data-es="Enviar aplicación" data-en="Submit Application">Enviar aplicación</button>
       </form>
     </section>
   </main>
-  <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
+
+  <footer data-es="Hecho con código y café." data-en="Made with code and coffee.">&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
+
+  <script>
+    // Hide/show nav on scroll
+    let lastScroll = window.pageYOffset;
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      const current = window.pageYOffset;
+      navbar.style.top = current > lastScroll ? '-60px' : '0';
+      lastScroll = current <= 0 ? 0 : current;
+    });
+
+    // Language toggle
+    const toggle = document.getElementById('langToggle');
+    const elements = document.querySelectorAll('[data-es]');
+    let lang = 'es';
+    toggle.addEventListener('click', () => {
+      lang = lang === 'es' ? 'en' : 'es';
+      toggle.textContent = lang === 'es' ? 'EN' : 'ES';
+      elements.forEach(el => el.textContent = el.getAttribute(`data-${lang}`));
+      document.documentElement.lang = lang;
+    });
+  </script>
 </body>
 </html>
