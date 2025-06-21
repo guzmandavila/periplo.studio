@@ -16,11 +16,6 @@
       --fg: #f3ead5;
       --accent: #e8dfc5;
     }
-    .light {
-      --bg: #f3ead5;
-      --fg: #000000;
-      --accent: #121212;
-    }
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
@@ -33,6 +28,7 @@
     a { color: var(--fg); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--accent); }
     header, main, nav, section, footer { display: block; }
+
     /* Navegación */
     nav {
       position: fixed;
@@ -61,6 +57,13 @@
       background: rgba(243,234,213,0.15);
       color: var(--accent);
     }
+    nav a.cta {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+    }
+
     /* Hero */
     .hero {
       text-align: center;
@@ -71,6 +74,7 @@
       height: auto;
       margin-bottom: 1rem;
     }
+
     /* Contenido */
     main {
       max-width: 900px;
@@ -88,20 +92,22 @@
       border-left: 4px solid var(--accent);
       padding-left: .75rem;
     }
+
     /* Visión y esencia */
     #vision p {
       margin-top: 1rem;
       font-size: 1rem;
     }
+
     /* Trabajos */
-    #trabajos .video-frame {
+    .video-frame {
       position: relative;
       padding-top: 56.25%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    #trabajos .video-frame iframe {
+    .video-frame iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -132,6 +138,7 @@
     .video-nav button:hover:not(:disabled) {
       transform: scale(1.1);
     }
+
     /* Servicios */
     #servicios p {
       margin-bottom: 1rem;
@@ -185,10 +192,9 @@
       font-style: italic;
       color: rgba(243,234,213,0.7);
     }
-    /* Cotización y Trabaja */
-    section#cotizacion, section#trabaja {
-      margin-top: 2rem;
-    }
+
+    /* Formularios */
+    section#cotizacion, section#trabaja { margin-top: 2rem; }
     form { display: grid; gap: 1rem; }
     label { display: flex; flex-direction: column; font-size: .9rem; }
     input, textarea {
@@ -215,6 +221,7 @@
       background: var(--accent);
       color: var(--bg);
     }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -228,7 +235,7 @@
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
-    <button id="themeToggle" aria-label="Cambiar tema" style="background:transparent;border:none;color:var(--fg);font-size:1.2rem;cursor:pointer;">🌓</button>
+    <a href="colabora.html">Colabora con nosotros</a>
   </nav>
   <header class="hero">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
@@ -236,11 +243,11 @@
   <main>
     <section id="vision">
       <h2>Visión y esencia</h2>
-      <p>En Periplo Studio confluyen la precision tecnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imagenes y sonido que resuenan con la voz y los valores de quienes confian en nosotros.</p>
+      <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imágenes y sonido que resuenan con la voz y los valores de quienes confían en nosotros.</p>
     </section>
     <section id="trabajos">
       <h2>Trabajos</h2>
-      <div class="video-frame" id="videoFrame">
+      <div class="video-frame">
         <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-nav">
@@ -291,10 +298,9 @@
   </main>
   <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
   <script>
-    // Carrusel de videos
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
-      'https://www.youtube.com/embed/Q88Erleku84',
+      'https://www.youtube.com/embed/Q88Erku84',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
       'https://www.youtube.com/embed/e9wMxjxAc5c',
       'https://www.youtube.com/embed/vH5tkyOjVJo',
@@ -307,37 +313,10 @@
     const player = document.getElementById('videoPlayer');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    function updateButtons() {
-      prevBtn.disabled = idx === 0;
-      nextBtn.disabled = idx === videos.length - 1;
-    }
-    prevBtn.addEventListener('click', () => {
-      if (idx > 0) {
-        idx--;
-        player.src = videos[idx];
-        updateButtons();
-      }
-    });
-    nextBtn.addEventListener('click', () => {
-      if (idx < videos.length - 1) {
-        idx++;
-        player.src = videos[idx];
-        updateButtons();
-      }
-    });
+    function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
+    prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; player.src = videos[idx]; updateButtons(); }});
+    nextBtn.addEventListener('click', () => { if (idx < videos.length - 1) { idx++; player.src = videos[idx]; updateButtons(); }});
     updateButtons();
-
-    // Toggle tema claro/oscuro
-    const toggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'light') {
-      document.body.classList.add('light');
-    }
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      const theme = document.body.classList.contains('light') ? 'light' : 'dark';
-      localStorage.setItem('theme', theme);
-    });
   </script>
 </body>
 </html>
