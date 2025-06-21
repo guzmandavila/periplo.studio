@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Periplo Studio</title>
   <meta name="description" content="Producción audiovisual con precisión y creatividad.">
-  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
   <link rel="shortcut icon" href="favicon.png">
-  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #000000; /* Negro cine */
+      --bg: #000000;
       --fg: #f3ead5;
       --accent: #e8dfc5;
     }
@@ -27,10 +25,7 @@
     }
     a { color: var(--fg); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--accent); }
-
     header, main, nav, section, footer { display: block; }
-
-    /* Navegación plana y futurista, estilo GNOME sin glow */
     nav {
       position: fixed;
       top: 0;
@@ -51,7 +46,6 @@
       padding: 0.3rem 0.8rem;
       color: var(--fg);
       background: transparent;
-      border: none;
       border-radius: 4px;
       transition: background 0.2s ease, color 0.2s ease;
     }
@@ -59,80 +53,85 @@
       background: rgba(243,234,213,0.15);
       color: var(--accent);
     }
-    nav a.cta {
-      background: var(--accent);
-      color: var(--bg);
-      font-size: 0.8rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 4px;
-    }
-    nav a.cta:hover {
-      background: var(--fg);
-      color: var(--bg);
-    }
-    nav a.cta:hover {
-      background: var(--fg);
-      color: var(--bg);
-    }
-
-    /* Hero / Logo */
     .hero {
       text-align: center;
       padding: 4rem 1rem 2rem;
     }
     .hero img {
-      max-width: 600px; height: auto; margin-bottom: 1rem;
+      max-width: 600px;
+      height: auto;
+      margin-bottom: 1rem;
     }
-
-    /* Main container */
     main {
-      max-width: 900px; margin: 0 auto; padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
-
-    /* Secciones y títulos destacados */
     section {
       margin-bottom: 3rem;
     }
     section h2 {
-      font-family: 'Bebas Neue', cursive; font-size: 2.25rem;
-      margin-bottom: .5rem; color: var(--accent);
-      border-left: 4px solid var(--accent); padding-left: .75rem;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.25rem;
+      margin-bottom: .5rem;
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+      padding-left: .75rem;
     }
-
-    /* Visión y esencia */
     #vision p {
-      margin-top: 1rem; font-size: 1rem;
+      margin-top: 1rem;
+      font-size: 1rem;
     }
-
-    /* Trabajos / Video */
     #trabajos .video-frame {
-      position: relative; padding-top: 56.25%; overflow: hidden;
-      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      padding-top: 56.25%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     #trabajos .video-frame iframe {
-      position: absolute; top:0; left:0; width:100%; height:100%; border:none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
     .video-nav {
-      display: flex; justify-content: space-between; margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
     }
     .video-nav button {
-      background: var(--accent); border: none; color: var(--bg);
-      width: 3rem; height: 3rem; border-radius: 50%; font-size: 1.2rem;
-      cursor: pointer; transition: transform .2s;
+      background: var(--accent);
+      border: none;
+      color: var(--bg);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform .2s;
     }
     .video-nav button:disabled {
-      background: #444; cursor: default;
+      background: #444;
+      cursor: default;
     }
     .video-nav button:hover:not(:disabled) {
       transform: scale(1.1);
     }
-
-    /* Servicios */
     #servicios p {
-      margin-bottom: 1rem; font-size: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
-    .cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    @media(min-width:700px) { .cards { grid-template-columns: repeat(3,1fr); } }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media(min-width:700px) {
+      .cards { grid-template-columns: repeat(3,1fr); }
+    }
     .service-card {
       background: #1e1e1e;
       border-radius: 8px;
@@ -168,56 +167,84 @@
       border-radius: 2px;
     }
     #servicios em {
-      display: block; margin-top: 1rem; font-style: italic;
+      display: block;
+      margin-top: 1rem;
+      font-style: italic;
       color: rgba(243,234,213,0.7);
     }
-
-    /* Formularios */
     form { display: grid; gap: 1rem; }
     label { display: flex; flex-direction: column; font-size: .9rem; }
     input, textarea {
-      margin-top: .25rem; padding: .75rem;
-      border: 1px solid #333; border-radius: 6px;
-      background: #1e1e1e; color: var(--fg); font-family: inherit;
+      margin-top: .25rem;
+      padding: .75rem;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: #1e1e1e;
+      color: var(--fg);
+      font-family: inherit;
     }
     .button-primary {
-      background: transparent; color: var(--fg);
-      border: 1px solid var(--accent); padding: .75rem 1.5rem;
-      border-radius: 6px; font-size: .9rem; cursor: pointer;
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--accent);
+      padding: .75rem 1.5rem;
+      border-radius: 6px;
+      font-size: .9rem;
+      cursor: pointer;
       transition: background .2s, color .2s;
       width: max-content;
     }
     .button-primary:hover {
-      background: var(--accent); color: var(--bg);
+      background: var(--accent);
+      color: var(--bg);
     }
-
-    /* Footer */
     footer {
-      text-align: center; padding: 2rem 1rem;
-      font-size: .8rem; color: #777;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: #777;
       border-top: 1px solid rgba(243,234,213,0.1);
+    }
+  <    .work-section {
+      background: rgba(232,237,213,0.05);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+      transition: transform .3s ease;
+    }
+    .work-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .work-section p:first-child {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .work-section p:nth-child(2) {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .work-section form {
+      margin-top: 1.5rem;
     }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#trabajos">Trabajos</a>
   </nav>
-
   <header class="hero">
     <img src="LOGO_PeriploStudion-03.png" alt="Periplo Studio Logo" loading="lazy">
   </header>
-
   <main>
-    <!-- Visión y esencia -->
     <section id="vision">
       <h2>Visión y esencia</h2>
       <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imágenes y sonido que resuenan con la voz y los valores de quienes confían en nosotros.</p>
     </section>
-
-    <!-- Trabajos -->
     <section id="trabajos">
       <h2>Trabajos</h2>
       <div class="video-frame" id="videoFrame">
@@ -228,8 +255,6 @@
         <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
       </div>
     </section>
-
-    <!-- Servicios -->
     <section id="servicios">
       <h2>Servicios</h2>
       <p>¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado.</p>
@@ -250,8 +275,6 @@
       <p style="margin-top:1rem; font-weight:600;">Necesitas un equipo como nosotros para centrarte en tu creatividad: sin vínculos laborales, sin sorpresas y con la flexibilidad que tu proyecto merece.</p>
       <em>Elige la modalidad que potencia tu historia y deja la producción en manos de expertos.</em>
     </section>
-
-    <!-- Cotización -->
     <section id="cotizacion">
       <h2>Inicia tu proyecto</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
@@ -261,30 +284,20 @@
         <button type="submit" class="button-primary">Enviar solicitud</button>
       </form>
     </section>
-
-    <!-- Trabaja con nosotros -->
-    <section id="trabaja">
-      <h2>Trabaja con nosotros</h2>
+    <section id="trabaja" class="work-section">
+      <p>¿Traes la sabiduría acumulada del camino o el fuego de una idea fresca? En Periplo Studio <strong>comenzamos desde abajo</strong>, valoramos la pasión y la creatividad por igual. Solo necesitas ganas de aprender y narrar historias que inspiren.</p>
+      <p>Somos una <strong>red global de productores</strong> con apoyo de grandes mentes en Argentina, Estados Unidos, España, Chile, Portugal, Colombia y México. Juntos soñamos con estar conectados y llevar tu proyecto a cualquier rincón del mundo.</p>
+      <p>Únete a nuestro equipo y descubre cómo tus ideas pueden cobrar vida sin barreras ni burocracia. Aquí nos apoyamos mutuamente y crecemos con cada proyecto.</p>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
         <label>Nombre completo<input type="text" name="Nombre completo" required></label>
         <label>Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
-        <label>Experiencia y habilidades<textarea name="Experiencia" required></textarea></label>
+        <label>Cuéntanos tu motivación<textarea name="Motivación" required></textarea></label>
         <button type="submit" class="button-primary">Enviar aplicación</button>
       </form>
     </section>
-
-    <!-- CTAs al final -->
-    <div class="final-cta" style="text-align:center; padding:2rem 0;">
-      <a href="#cotizacion" class="cta" style="margin-right:1rem;">Inicia tu proyecto</a>
-      <a href="#trabaja" class="cta">Trabaja con nosotros</a>
-    </div>
   </main>
-
   <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
-
   <script>
-    // Carrusel completo con todos los videos
-    // Carrusel completo con todos los videos (segundo eliminado)
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
       'https://www.youtube.com/embed/fsBp5IUqhdg',
