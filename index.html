@@ -320,6 +320,43 @@
     prev.onclick = () => { if (idx > 0) { player.src = videos[--idx]; upd(); } };
     next.onclick = () => { if (idx < videos.length - 1) { player.src = videos[++idx]; upd(); } };
     upd();
+  $1
+  <section id="dino-game" style="text-align:center; margin:2rem 0;">
+    <h2>Desafío Rápido</h2>
+    <canvas id="gameCanvas" width="600" height="150" style="background:#fff; display:block; margin:0 auto; border:2px solid #333;"></canvas>
+  </section>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let dino = { x:50, y:100, width:20, height:20, vy:0, gravity:0.6, jumpPower:-12 };
+    let obstacle = { x:canvas.width, y:120, width:20, height:30, speed:6 };
+    let gameOver = false;
+    function reset() { dino.y=100; dino.vy=0; obstacle.x=canvas.width; gameOver=false; update(); }
+    function update() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      dino.vy += dino.gravity;
+      dino.y += dino.vy;
+      if (dino.y > 100) { dino.y = 100; dino.vy = 0; }
+      ctx.fillStyle = '#000'; ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+      obstacle.x -= obstacle.speed;
+      if (obstacle.x < -obstacle.width) { obstacle.x = canvas.width; }
+      ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+      if (dino.x < obstacle.x + obstacle.width && dino.x + dino.width > obstacle.x && dino.y < obstacle.y + obstacle.height && dino.y + dino.height > obstacle.y) {
+        gameOver = true;
+      }
+      if (!gameOver) {
+        requestAnimationFrame(update);
+      } else {
+        ctx.fillStyle = 'red'; ctx.font = '20px sans-serif'; ctx.fillText('Game Over - Presiona Space para reiniciar', 50, 80);
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        if (dino.y === 100 && !gameOver) { dino.vy = dino.jumpPower; }
+        if (gameOver) { reset(); }
+      }
+    });
+    update();
   </script>
 </body>
 </html>
