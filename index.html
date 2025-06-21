@@ -39,7 +39,7 @@
     }
     nav a {
       font-weight: 600; text-transform: uppercase; font-size: .9rem;
-      padding: .25rem .5rem; position: relative; white-space: nowrap;
+      padding: .25rem .5rem; white-space: nowrap;
     }
     nav a.cta { border: 1px solid var(--accent); border-radius: 20px; }
     nav a::after {
@@ -99,13 +99,6 @@
     .video-nav button:hover:not(:disabled) {
       transform: scale(1.1);
     }
-
-    /* Enlaces adicionales */
-    #links ul {
-      list-style: none; padding: 0; font-size: 1rem;
-    }
-    #links li { margin-bottom: .5rem; }
-    #links a { text-decoration: underline; }
 
     /* Servicios */
     #servicios p {
@@ -188,15 +181,6 @@
         <button id="prevBtn" aria-label="Anterior" disabled>&#9664;</button>
         <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
       </div>
-      <!-- Enlaces adicionales -->
-      <div id="links">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=CfwpyJeH-tM" target="_blank">Video 2</a></li>
-          <li><a href="https://www.youtube.com/watch?v=7koHWpFCJFs" target="_blank">Video 3</a></li>
-          <li><a href="https://www.instagram.com/p/DJC5WUfITi3/" target="_blank">Instagram Post</a></li>
-          <li><a href="https://www.youtube.com/watch?v=h12_wN5codo&list=PL4ukCuVPXaezXqLIBBo_RC_v8VVstoco9&index=9" target="_blank">Playlist YouTube</a></li>
-        </ul>
-      </div>
     </section>
 
     <!-- Servicios -->
@@ -227,7 +211,7 @@
       <h2>Trabaja con nosotros</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
         <label>Nombre completo<input type="text" name="Nombre completo" required></label>
-        <label>Contacto (email o teléfono)<input type="text" name="Contacto" required></label>
+        <label>Contacto (email o teléfono<input type="text" name="Contacto" required></label>
         <label>Experiencia y habilidades<textarea name="Experiencia" required></textarea></label>
         <button type="submit" class="button-primary">Enviar aplicación</button>
       </form>
@@ -237,9 +221,15 @@
   <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
 
   <script>
-    // Carrusel con nuevos videos
+    // Carrusel completo con todos los videos
     const videos = [
       'https://www.youtube.com/embed/rhUEiaQfEJ4',
+      'https://www.youtube.com/embed/Q88Erleku84',
+      'https://www.youtube.com/embed/fsBp5IUqhdg',
+      'https://www.youtube.com/embed/e9wMxjxAc5c',
+      'https://www.youtube.com/embed/vH5tkyOjVJo',
+      'https://www.youtube.com/embed/gqyrazOetYY',
+      'https://www.youtube.com/embed/4ZoNwZuYqWo',
       'https://www.youtube.com/embed/CfwpyJeH-tM',
       'https://www.youtube.com/embed/7koHWpFCJFs'
     ];
@@ -248,8 +238,8 @@
     const prev = document.getElementById('prevBtn');
     const next = document.getElementById('nextBtn');
     function upd() { prev.disabled = idx === 0; next.disabled = idx === videos.length - 1; }
-    prev.onclick = () => { if (idx>0){player.src=videos[--idx];upd();}};
-    next.onclick = () => { if(idx<videos.length-1){player.src=videos[++idx];upd();}};
+    prev.onclick = () => { if (idx > 0) { player.src = videos[--idx]; upd(); } };
+    next.onclick = () => { if (idx < videos.length - 1) { player.src = videos[++idx]; upd(); } };
     upd();
   </script>
 </body>
