@@ -37,9 +37,8 @@
       z-index: 1000;
     }
     nav a {
-      font-weight: 600; text-transform: uppercase;
-      font-size: .8rem; padding: .3rem .8rem;
-      color: var(--fg); border-radius: 4px;
+      font-weight: 600; text-transform: uppercase; font-size: .8rem;
+      padding: .3rem .8rem; color: var(--fg); border-radius: 4px;
       transition: background .2s, color .2s;
     }
     nav a:hover {
@@ -63,14 +62,12 @@
       border-left: 4px solid var(--accent); padding-left: .75rem;
     }
 
-    /* Visión y esencia */
+    /* Secciones */
     #vision p { margin-top: 1rem; font-size: 1rem; }
-
-    /* Trabajos */
-    .video-frame { position: relative; padding-top: 56.25%; overflow: hidden;
+    #trabajos .video-frame { position: relative; padding-top: 56.25%; overflow: hidden;
       border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .video-frame iframe { position: absolute; top: 0; left: 0;
+    #trabajos .video-frame iframe { position: absolute; top: 0; left: 0;
       width: 100%; height: 100%; border: none;
     }
     .video-nav { display: flex; justify-content: space-between; margin-top: 1rem; }
@@ -92,56 +89,47 @@
       transition: transform .3s ease, box-shadow .3s ease;
       display: flex; flex-direction: column; gap: 1rem;
     }
-    .service-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-      transform: translateY(-6px);
-    }
+    .service-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.6); transform: translateY(-6px); }
     .service-card h3 {
-      font-family: 'Bebas Neue', cursive; font-size: 1.6rem;
-      text-transform: uppercase;
+      font-family: 'Bebas Neue', cursive; font-size: 1.6rem; text-transform: uppercase;
       background: linear-gradient(135deg, var(--accent) 0%, rgba(232,237,213,0.8) 100%);
       -webkit-background-clip: text; color: transparent;
       position: relative; padding-bottom: .5rem;
     }
-    .service-card h3::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 50px; height: 4px; background: var(--accent);
-      border-radius: 2px;
+    .service-card h3::after { content: ''; position: absolute; bottom: 0; left: 0;
+      width: 50px; height: 4px; background: var(--accent); border-radius: 2px;
     }
-    #servicios em { display: block; margin-top: 1rem;
-      font-style: italic; color: rgba(243,234,213,0.7);
+    #servicios em { display: block; margin-top: 1rem; font-style: italic;
+      color: rgba(243,234,213,0.7);
     }
 
     /* Cotización */
     section#cotizacion { margin-top: 2rem; }
     form { display: grid; gap: 1rem; }
     label { display: flex; flex-direction: column; font-size: .9rem; }
-    input, textarea {
-      margin-top: .25rem; padding: .75rem;
-      border: 1px solid #333; border-radius: 6px;
-      background: #1e1e1e; color: var(--fg); font-family: inherit;
+    input, textarea { margin-top: .25rem; padding: .75rem;
+      border: 1px solid #333; border-radius: 6px; background: #1e1e1e;
+      color: var(--fg); font-family: inherit;
     }
     .button-primary {
       background: transparent; color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: .75rem 1.5rem; border-radius: 6px;
-      font-size: .9rem; cursor: pointer;
+      border: 1px solid var(--accent); padding: .75rem 1.5rem;
+      border-radius: 6px; font-size: .9rem; cursor: pointer;
       transition: background .2s, color .2s; width: max-content;
     }
-    .button-primary:hover {
-      background: var(--accent); color: var(--bg);
-    }
+    .button-primary:hover { background: var(--accent); color: var(--bg); }
 
-    footer {
-      text-align: center; padding: 2rem 1rem;
-      font-size: .8rem; color: #777;
-      border-top: 1px solid rgba(243,234,213,0.1);
+    footer { text-align: center; padding: 2rem 1rem; font-size: .8rem;
+      color: #777; border-top: 1px solid rgba(243,234,213,0.1);
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#servicios">Servicios</a>
-    <a href="#trabajos">Trabajos</a>
+    <a href="#vision">Esencia Revelada</a>
+    <a href="#trabajos">Obras en Acción</a>
+    <a href="#servicios">Alquimia Creativa</a>
+    <a href="#cotizacion" class="cta">Comienza tu viaje</a>
     <a href="colabora.html" class="cta">Colabora con nosotros</a>
   </nav>
   <header class="hero">
@@ -149,11 +137,11 @@
   </header>
   <main>
     <section id="vision">
-      <h2>Visión y esencia</h2>
+      <h2>Esencia Revelada</h2>
       <p>En Periplo Studio confluyen la precisión técnica y el tacto creativo. Cada proyecto inicia con una escucha profunda de tu marca, se moldea con rigor profesional y se entrega con autenticidad. Construimos imágenes y sonido que resuenan con la voz y los valores de quienes confían en nosotros.</p>
     </section>
     <section id="trabajos">
-      <h2>Trabajos</h2>
+      <h2>Ecos en movimiento</h2>
       <div class="video-frame">
         <iframe id="videoPlayer" src="https://www.youtube.com/embed/rhUEiaQfEJ4" allowfullscreen loading="lazy"></iframe>
       </div>
@@ -161,9 +149,16 @@
         <button id="prevBtn" aria-label="Anterior" disabled>&#9664;</button>
         <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
       </div>
+      <div id="links">
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=7koHWpFCJFs" target="_blank">Video 3</a></li>
+          <li><a href="https://www.instagram.com/p/DJC5WUfITi3/" target="_blank">Instagram Post</a></li>
+          <li><a href="https://www.youtube.com/watch?v=h12_wN5codo&list=PL4ukCuVPXaezXqLIBBo_RC_v8VVstoco9&index=9" target="_blank">Playlist YouTube</a></li>
+        </ul>
+      </div>
     </section>
     <section id="servicios">
-      <h2>Servicios</h2>
+      <h2>Alquimia Creativa</h2>
       <p>¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado.</p>
       <div class="cards">
         <div class="service-card">
@@ -183,7 +178,7 @@
       <em>Elige la modalidad que potencia tu historia y deja la producción en manos de expertos.</em>
     </section>
     <section id="cotizacion">
-      <h2>Inicia tu proyecto</h2>
+      <h2>Comienza tu viaje</h2>
       <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
         <label>Nombre o empresa<input type="text" name="Nombre o empresa" required></label>
         <label>Descripción<textarea name="Descripción" required></textarea></label>
@@ -210,8 +205,8 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
-    prevBtn.addEventListener('click', () => { if (idx>0) { idx--; player.src = videos[idx]; updateButtons(); }});
-    nextBtn.addEventListener('click', () => { if (idx<videos.length-1) { idx++; player.src = videos[idx]; updateButtons(); }});
+    prevBtn.addEventListener('click', () => { if (idx>0) { idx--; player.src = videos[idx]; updateButtons(); } });
+    nextBtn.addEventListener('click', () => { if (idx<videos.length-1) { idx++; player.src = videos[idx]; updateButtons(); } });
     updateButtons();
   </script>
 </body>
