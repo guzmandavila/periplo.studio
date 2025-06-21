@@ -107,10 +107,14 @@
     .cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media(min-width:700px) { .cards { grid-template-columns: repeat(3,1fr); } }
     .service-card {
-      background: #1e1e1e; border: 1px solid rgba(243,234,213,0.1);
-      border-radius: 8px; padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: box-shadow .2s, transform .2s;
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform .3s ease, box-shadow .3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     .service-card:hover {
       box-shadow: 0 6px 18px rgba(0,0,0,0.4);
@@ -186,13 +190,22 @@
     <!-- Servicios -->
     <section id="servicios">
       <h2>Servicios</h2>
-      <p>En la práctica hemos observado que muchas empresas necesitan un equipo audiovisual completo, pero no desean invertir en la adquisición de equipos o la contratación de personal adicional. Tampoco quieren cotizar cada video de manera independiente con una productora. Por eso ofrecemos una modalidad en la que no tienes que preocuparte por contratar personal ni asumir altos costos en equipos.</p>
+      <p>¿Quieres brillar sin preocuparte por la logística? En Periplo Studio te ofrecemos soluciones audiovisuales hechas a tu medida, para que tu mensaje impacte y conecte:</p>
       <div class="cards">
-        <div class="service-card"><h3>Producción por proyecto</h3><p>Entrevistas, lanzamientos, registros. Incluye dron, audio, postproducción y entrega final.</p></div>
-        <div class="service-card"><h3>Producción mensual</h3><p>Contenidos periódicos para redes y comunicación interna. Plan editorial y equipo completo.</p></div>
-        <div class="service-card"><h3>Producción integral</h3><p>Cámaras, dron, audio, edición, almacenamiento y licencias. Todo bajo tarifa mensual.</p></div>
+        <div class="service-card">
+          <h3>Producción por proyecto</h3>
+          <p>Lleva tu idea al siguiente nivel: grabamos, editamos y entregamos contenido profesional (drone, audio e imagen) listo para cautivar a tu audiencia.</p>
+        </div>
+        <div class="service-card">
+          <h3>Producción mensual</h3>
+          <p>Contenido constante y fresco: campañas, redes sociales y comunicación interna con un calendario editorial personalizado y un equipo creativo a tu disposición.</p>
+        </div>
+        <div class="service-card">
+          <h3>Producción integral</h3>
+          <p>Un servicio 360°: cámaras, dron, audio profesional, edición, almacenamiento y licencias. Todo bajo una tarifa única que sustituye la necesidad de un equipo in-house.</p>
+        </div>
       </div>
-      <em>Un servicio pensado para empresas que buscan excelencia sin complicaciones.</em>
+      <em>Soluciones pensadas para que te enfoques en tu visión, mientras nosotros contamos tu historia.</em>
     </section>
 
     <!-- Cotización -->
