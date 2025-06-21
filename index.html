@@ -162,7 +162,57 @@
         <button id="nextBtn" aria-label="Siguiente">&#9654;</button>
       </div>
     </section>
-    <section id="#servicios">...
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <p>¿Quieres brillar sin preocuparte por la logística? En Periplo Studio nos manejamos con tu estrategia o idea, <strong>no somos una agencia de publicidad</strong>: somos tu equipo audiovisual dedicado.</p>
+      <div class="cards">
+        <div class="service-card">
+          <h3>Producción por proyecto</h3>
+          <p>Cada encargo puntual se ajusta a tu visión: planificamos, grabamos y entregamos contenido excepcional sin ataduras mensuales. Ideal para lanzamientos, entrevistas y eventos.</p>
+        </div>
+        <div class="service-card">
+          <h3>Producción mensual</h3>
+          <p>Mantén tu marca viva con contenido constante: videos para redes, campañas y comunicación interna. Trabajamos contigo mes a mes, sin compromisos largos, adaptándonos a tu ritmo.</p>
+        </div>
+        <div class="service-card">
+          <h3>Producción integral</h3>
+          <p>Olvídate de ser in-house o de invertir en equipos costosos: cámaras, dron, audio, edición y licencias en un solo paquete. Te liberamos de nóminas y logística, eliminando dolores de cabeza y costes ocultos.</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem; font-weight:600;">Necesitas un equipo como nosotros para centrarte en tu creatividad: sin vínculos laborales, sin sorpresas y con la flexibilidad que tu proyecto merece.</p>
+      <em>Elige la modalidad que potencia tu historia y deja la producción en manos de expertos.</em>
+    </section>
+    <section id="cotizacion">
+      <h2>Inicia tu proyecto</h2>
+      <form action="mailto:info@periplo.studio" method="post" enctype="text/plain">
+        <label>Nombre o empresa<input type="text" name="Nombre o empresa" required></label>
+        <label>Descripción<textarea name="Descripción" required></textarea></label>
+        <label>Otros detalles imprescindibles<textarea name="Detalles"></textarea></label>
+        <button type="submit" class="button-primary">Enviar solicitud</button>
+      </form>
+    </section>
   </main>
+  <footer>&copy; 2025 Periplo Studio. Hecho con código y café.</footer>
+  <script>
+    const videos = [
+      'https://www.youtube.com/embed/rhUEiaQfEJ4',
+      'https://www.youtube.com/embed/Q88Erleku84',
+      'https://www.youtube.com/embed/fsBp5IUqhdg',
+      'https://www.youtube.com/embed/e9wMxjxAc5c',
+      'https://www.youtube.com/embed/vH5tkyOjVJo',
+      'https://www.youtube.com/embed/gqyrazOetYY',
+      'https://www.youtube.com/embed/4ZoNwZuYqWo',
+      'https://www.youtube.com/embed/CfwpyJeH-tM',
+      'https://www.youtube.com/embed/7koHWpFCJFs'
+    ];
+    let idx = 0;
+    const player = document.getElementById('videoPlayer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    function updateButtons() { prevBtn.disabled = idx === 0; nextBtn.disabled = idx === videos.length - 1; }
+    prevBtn.addEventListener('click', () => { if (idx>0) { idx--; player.src = videos[idx]; updateButtons(); }});
+    nextBtn.addEventListener('click', () => { if (idx<videos.length-1) { idx++; player.src = videos[idx]; updateButtons(); }});
+    updateButtons();
+  </script>
 </body>
 </html>
